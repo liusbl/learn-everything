@@ -1,0 +1,13 @@
+TODO:
+Create a structure for adding easily finding appropriate files.
+Ideas:
+    Search by tags
+    Custom Android studio plugin
+    Display the name of the current Fragment / Activity
+
+Things to implement:
+    Toolbar
+    Animations
+    ...
+    Debug options
+
