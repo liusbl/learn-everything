@@ -12,7 +12,10 @@ class LearnToolbarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learn_toolbar)
         simpleToolbarButton.setOnClickListener {
-            startActivity(SimpleToolbarActivity.newInstance(this))
+            startActivity(SimpleToolbarActivity.createIntent(this))
+        }
+        menuToolbarButton.setOnClickListener {
+            startActivity(MenuToolbarActivity.createIntent(this))
         }
     }
 

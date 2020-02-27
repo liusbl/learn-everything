@@ -20,6 +20,10 @@ Display description on the screen
 
 Links to
 
+Check material.io, it contains code for material components
+
+It might not be always easy to find and navigate to a place, so some kind of system (deeplinks maybe, adb commands?),
+    which would open the exact screen, would be very useful
 
 
 To find inspiration, check these places (also when implementing add links to them if possible):
