@@ -11,9 +11,8 @@ class LearnToolbarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learn_toolbar)
-        setSupportActionBar(toolbar)
-        toolbar.setOnClickListener {
-            supportActionBar?.hide()
+        simpleToolbarButton.setOnClickListener {
+            startActivity(SimpleToolbarActivity.newInstance(this))
         }
     }
 

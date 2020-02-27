@@ -21,5 +21,7 @@
 
         <activity android:name=".toolbar.LearnToolbarActivity"/>
 
+        <activity android:name=".toolbar.SimpleToolbarActivity"/>
+
     </application>
 </manifest>
