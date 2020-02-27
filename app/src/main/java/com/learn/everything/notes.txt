@@ -1,11 +1,48 @@
-TODO:
+Take all the old sandbox apps and move what was learnt to here.
+
 Create a structure for adding easily finding appropriate files.
-Ideas:
-    Search by tags
-    Custom Android studio plugin
-    Display the name of the current Fragment / Activity
+
+Display not only UI, but also architecture
+
+Find a very convenient
+
+Downloadable app from Google Play or github
+
+Search by tags
+
+Custom Android studio plugin
+
+Downloadable app from Google Play
+
+Display the name of the current Fragment / Activity
+
+Display description on the screen
+
+Links to
+
+
+
+To find inspiration, check these places (also when implementing add links to them if possible):
+    Other sandbox apps
+    Old projects
+    Telesoftas' projects / templates / workshops that I have access to
+    Conferences
+    Articles from various programming sites
+    Stackoverflow popular questions
+    AndroidDev popular questions
+    Popular github repos for android
+    Come up with solutions yourself
+
+
+Document in detail both in code and in UI of app.
+
+
+
+
+Ways to find things
 
 Things to implement:
+
     Toolbar
     Animations
     ...
