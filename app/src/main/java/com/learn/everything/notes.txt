@@ -40,7 +40,17 @@ To find inspiration, check these places (also when implementing add links to the
 
 Document in detail both in code and in UI of app.
 
-
+Make a list of all websites that could have relevant information:
+    /r/androiddev
+    medium
+    kotlin weekly
+    android weekly
+    stylingandroid
+    proandroiddev
+    stackoverflow
+    android dev slack
+    Android Developer youtube channel
+    conferences
 
 
 Ways to find things
