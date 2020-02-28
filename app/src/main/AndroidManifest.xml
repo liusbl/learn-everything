@@ -24,6 +24,7 @@
         <activity android:name=".toolbar.SimpleToolbarActivity"/>
 
         <activity android:name=".toolbar.MenuToolbarActivity"/>
+        <activity android:name=".toolbar.BottomToolbarActivity"/>
 
     </application>
 </manifest>
