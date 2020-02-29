@@ -63,3 +63,5 @@ It is left arrow button in the action bar
 Learn ActionMode
 
 Turns out you can have multiple Action Bars at the same time
+
+use android:parentActivityName for adding navigation button
