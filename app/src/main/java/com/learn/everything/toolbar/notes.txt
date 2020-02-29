@@ -1,0 +1,65 @@
+Toolbar resources:
+
+Toolbar documentation
+Contains basic description, provides customization options and method explanations
+https://developer.android.com/reference/androidx/appcompat/widget/Toolbar
+
+ActionBar documentation
+https://developer.android.com/reference/androidx/appcompat/app/ActionBar
+
+------------------
+Problems:
+
+java.lang.RuntimeException: Unable to start activity
+ComponentInfo{com.learn.everything/com.learn.everything.toolbar.LearnToolbarActivity}:
+java.lang.IllegalStateException: This Activity already has an action bar
+supplied by the window decor. Do not request Window.FEATURE_SUPPORT_ACTION_BAR and
+set windowActionBar to false in your theme to use a Toolbar instead.
+
+Settings support action bar with theme that contains action bar
+
+
+java.lang.RuntimeException: Unable to start activity
+ComponentInfo{com.learn.everything/com.learn.everything.toolbar.LearnToolbarActivity}:
+java.lang.NullPointerException: Attempt to invoke virtual method
+'java.lang.CharSequence android.widget.Toolbar.getTitle()' on a null object reference
+
+When you call `setActionBar(null)`
+
+
+Caused by: java.lang.IllegalArgumentException: AppCompat does not support the current
+theme features: { windowActionBar: false, windowActionBarOverlay: false,
+android:windowIsFloating: false, windowActionModeOverlay: false, windowNoTitle: false }
+
+When settings windowActionBar=false, you have to set WindowNoTitle=true
+
+--------------
+Notes:
+
+ThemeOverlay doesn't provide any attributes except for those that are specified
+
+Do you need to set Toolbar layout_height to ?attr/actionBarSize?
+
+Figure out how exactly splash works
+
+Default menu item showAsAction:never?
+
+Bullshit: settings app:menu="..." on Toolbar does nothing
+
+onCreateOptionsMenu() is used for initial menu setup (like inflation),
+onPrepareOptionsMenu() is used for updating it each time when it is displayed (like after inflation)
+
+What is the point of calling super.onCreateOptionsMenu / super.onPrepareOptionsMenu ?
+What is mParent in Activity class? Is it ever "true"?
+Talking about Activity#onCreateOptionsMenu
+Ahhh, maybe it's the android:parentActivityName???
+Consider if this is a valid approachd, it seems like it could be confusing...
+
+MenuItem#alphanumericModifier and numericalModifier are not clear
+
+What is the Up button?
+It is left arrow button in the action bar
+
+Learn ActionMode
+
+Turns out you can have multiple Action Bars at the same time

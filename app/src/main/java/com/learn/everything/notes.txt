@@ -1,5 +1,7 @@
 Take all the old sandbox apps and move what was learnt to here.
 
+Add learning resources to this project
+
 Create a structure for adding easily finding appropriate files.
 
 Display not only UI, but also architecture
@@ -61,4 +63,5 @@ Things to implement:
     Animations
     ...
     Debug options
+
 
