@@ -49,11 +49,8 @@ Bullshit: settings app:menu="..." on Toolbar does nothing
 onCreateOptionsMenu() is used for initial menu setup (like inflation),
 onPrepareOptionsMenu() is used for updating it each time when it is displayed (like after inflation)
 
-What is the point of calling super.onCreateOptionsMenu / super.onPrepareOptionsMenu ?
-What is mParent in Activity class? Is it ever "true"?
-Talking about Activity#onCreateOptionsMenu
-Ahhh, maybe it's the android:parentActivityName???
-Consider if this is a valid approachd, it seems like it could be confusing...
+super.onOptionsItemSelected() is necessary to enable handling up button clicks
+when used with android:parentActivityName
 
 MenuItem#alphanumericModifier and numericalModifier are not clear
 
@@ -63,5 +60,3 @@ It is left arrow button in the action bar
 Learn ActionMode
 
 Turns out you can have multiple Action Bars at the same time
-
-use android:parentActivityName for adding navigation button

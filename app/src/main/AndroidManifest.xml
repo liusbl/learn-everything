@@ -29,5 +29,9 @@
 
         <activity android:name=".toolbar.LogoToolbarActivity"/>
 
+        <activity
+            android:name=".toolbar.UpToolbarActivity"
+            android:parentActivityName=".toolbar.LearnToolbarActivity"/>
+
     </application>
 </manifest>
