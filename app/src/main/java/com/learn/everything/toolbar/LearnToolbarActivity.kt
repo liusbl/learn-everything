@@ -26,6 +26,9 @@ class LearnToolbarActivity : AppCompatActivity() {
         upToolbarButton.setOnClickListener {
             startActivity(UpToolbarActivity.createIntent(this))
         }
+        shareToolbarButton.setOnClickListener {
+            startActivity(ShareToolbarActivity.createIntent(this))
+        }
     }
 
     companion object {

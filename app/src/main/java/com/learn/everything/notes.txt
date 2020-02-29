@@ -30,7 +30,8 @@ It might not be always easy to find and navigate to a place, so some kind of sys
 To check if you learned anything, make a quiz
 
 To find inspiration, check these places (also when implementing add links to them if possible):
-    Other sandbox apps
+    Other sample apps
+    Other popular apps
     Old projects
     Telesoftas' projects / templates / workshops that I have access to
     Conferences
@@ -59,7 +60,8 @@ Make a list of all websites that could have relevant information:
 Ways to find things
 
 Things to implement:
-
+    Menus
+    Intent
     Toolbar
     Animations
     ...

@@ -50,7 +50,7 @@ onCreateOptionsMenu() is used for initial menu setup (like inflation),
 onPrepareOptionsMenu() is used for updating it each time when it is displayed (like after inflation)
 
 super.onOptionsItemSelected() is necessary to enable handling up button clicks
-when used with android:parentActivityName
+when used with android:parentActivityName and setDisplayHomeAsUpEnabled
 
 MenuItem#alphanumericModifier and numericalModifier are not clear
 
@@ -60,3 +60,28 @@ It is left arrow button in the action bar
 Learn ActionMode
 
 Turns out you can have multiple Action Bars at the same time
+
+Up button handling in fragments?
+
+Check Petras' implementation
+
+Figure out the similar methods to setDisplayHomeAsUpEnabled
+
+Toggleable actions, such as favorite icon
+
+Use SharedActionProvider for opening intent picker
+
+Custom ActionProvider
+
+ActivityChooserModel
+
+
+Add SearchView
+https://developer.android.com/guide/topics/search
+
+onCreateOptionsMenu should return true, not super.onCreateOptionsMenu
+
+
+SORT BY:
+TODO
+DONE

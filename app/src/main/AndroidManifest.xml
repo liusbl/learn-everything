@@ -32,6 +32,7 @@
         <activity
             android:name=".toolbar.UpToolbarActivity"
             android:parentActivityName=".toolbar.LearnToolbarActivity"/>
+        <activity android:name=".toolbar.ShareToolbarActivity"/>
 
     </application>
 </manifest>
