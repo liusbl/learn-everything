@@ -19,9 +19,10 @@ abstract class ViewModelActivity : AppCompatActivity() {
     protected inline fun <reified VM : BaseViewModel, reified T> viewModelWithArg(
         argument: T
     ): Lazy<VM> = lazy {
+        val viewModelClass = VM::class.java
         ViewModelProvider(
             this,
-            kodein.on(argument).instance(TAGGG)
-        ).get(VM::class.java)
+            kodein.on(argument).instance(viewModelClass.simpleName)
+        ).get(viewModelClass)
     }
 }
