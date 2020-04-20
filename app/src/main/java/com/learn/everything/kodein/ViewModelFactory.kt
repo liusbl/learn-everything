@@ -13,8 +13,8 @@ class ViewModelFactory : ViewModelProvider.Factory {
     }
 
     companion object {
-        inline fun <reified T> create(arg: T) =
-            object : ViewModelProvider.Factory {
+        inline fun <reified T> create(arg: T): ViewModelProvider.Factory {
+            return object : ViewModelProvider.Factory {
                 @Suppress("UNCHECKED_CAST")
                 override fun <T : ViewModel> create(modelClass: Class<T>): T {
                     val viewModel = kodein.on(arg)
@@ -22,5 +22,6 @@ class ViewModelFactory : ViewModelProvider.Factory {
                     return viewModel.apply(BaseViewModel::onCreate) as T
                 }
             }
+        }
     }
 }
