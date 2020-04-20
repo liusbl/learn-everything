@@ -1,9 +1,11 @@
 package com.learn.everything.kodein
 
-class LearnKodeinViewModelSimple(
+class LearnKodeinViewModelComplex(
+    private val argumentProvider: ArgumentProvider<String>,
     private val prefs: AppPreferences
 ) : BaseViewModel() {
     fun test() {
         prefs.name
+        argumentProvider.getArgument()
     }
 }

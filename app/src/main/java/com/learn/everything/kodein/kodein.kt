@@ -5,10 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.learn.everything.App
 import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.provider
-import org.kodein.di.generic.singleton
+import org.kodein.di.generic.*
 
 val kodein = Kodein.direct {
     bind<Context>() with provider { App.instance }
@@ -24,8 +21,31 @@ private fun viewModelModule() = Kodein.Module(name = "ViewModel") {
     bind<ViewModelProvider.Factory>() with singleton {
         ViewModelFactory()
     }
+
     bindViewModel<LearnKodeinViewModelSimple>() with provider {
         LearnKodeinViewModelSimple(instance())
+    }
+
+    bind<ViewModelProvider.Factory>(
+        tag = TAGGG
+    ) with contexted<ArgumentProvider<String>>().provider {
+        object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                val viewModel = on(context)
+                    .instance<LearnKodeinViewModelComplex>(tag = TAGGG) as BaseViewModel
+                return viewModel.apply(BaseViewModel::onCreate) as T
+            }
+        }
+    }
+
+    bind<LearnKodeinViewModelComplex>(
+        tag = TAGGG
+    ) with contexted<ArgumentProvider<String>>().provider {
+        LearnKodeinViewModelComplex(
+            context,
+            instance()
+        )
     }
 }
 
