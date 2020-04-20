@@ -5,14 +5,17 @@ import androidx.lifecycle.ViewModelProvider
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.on
 
-class ViewModelFactory : ViewModelProvider.Factory {
+class ViewModelFactory private constructor() {
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        val instance = kodein.instance<ViewModel>(tag = modelClass.simpleName) as BaseViewModel
-        return instance.apply(BaseViewModel::onCreate) as T
-    }
-
     companion object {
+        fun create(): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                val viewModel =
+                    kodein.instance<ViewModel>(tag = modelClass.simpleName) as BaseViewModel
+                return viewModel.apply(BaseViewModel::onCreate) as T
+            }
+        }
+
         inline fun <reified T> create(arg: T): ViewModelProvider.Factory =
             object : ViewModelProvider.Factory {
                 @Suppress("UNCHECKED_CAST")

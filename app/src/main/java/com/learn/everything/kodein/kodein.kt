@@ -19,33 +19,38 @@ private fun prefsModule() = Kodein.Module(name = "Preferences") {
 
 private fun viewModelModule() = Kodein.Module(name = "ViewModel") {
     bind<ViewModelProvider.Factory>() with singleton {
-        ViewModelFactory()
+        ViewModelFactory.create()
     }
 
     bindViewModel<LearnKodeinViewModelSimple>() with provider {
         LearnKodeinViewModelSimple(instance())
     }
 
+    bindViewModelWithArgument<LearnKodeinViewModelComplex>() with
+            contexted<ArgumentProvider<String>>().provider {
+                LearnKodeinViewModelComplex(
+                    context,
+                    instance()
+                )
+            }
+}
+
+inline fun <reified VM : ViewModel> Kodein.Builder.bindViewModelWithArgument(
+    overrides: Boolean? = null
+): Kodein.Builder.TypeBinder<VM> {
     bind<ViewModelProvider.Factory>(
-        tag = TAGGG
+        tag = VM::class.java.simpleName
     ) with contexted<ArgumentProvider<String>>().provider {
         ViewModelFactory.create(context)
     }
-
-    bind<LearnKodeinViewModelComplex>(
-        tag = TAGGG
-    ) with contexted<ArgumentProvider<String>>().provider {
-        LearnKodeinViewModelComplex(
-            context,
-            instance()
-        )
-    }
+    return bindViewModel()
 }
 
-inline fun <reified T : ViewModel> Kodein.Builder.bindViewModel(
+
+inline fun <reified VM : ViewModel> Kodein.Builder.bindViewModel(
     overrides: Boolean? = null
-): Kodein.Builder.TypeBinder<T> = bind<T>(
-    tag = T::class.java.simpleName,
+): Kodein.Builder.TypeBinder<VM> = bind<VM>(
+    tag = VM::class.java.simpleName,
     overrides = overrides
 )
 
