@@ -29,14 +29,7 @@ private fun viewModelModule() = Kodein.Module(name = "ViewModel") {
     bind<ViewModelProvider.Factory>(
         tag = TAGGG
     ) with contexted<ArgumentProvider<String>>().provider {
-        object : ViewModelProvider.Factory {
-            @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                val viewModel = on(context)
-                    .instance<LearnKodeinViewModelComplex>(tag = TAGGG) as BaseViewModel
-                return viewModel.apply(BaseViewModel::onCreate) as T
-            }
-        }
+        ViewModelFactory.create(context)
     }
 
     bind<LearnKodeinViewModelComplex>(
