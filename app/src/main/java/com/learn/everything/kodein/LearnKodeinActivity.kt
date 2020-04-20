@@ -14,13 +14,14 @@ val TAGGG = LearnKodeinViewModelComplex::class.java.simpleName
 class LearnKodeinActivity : ViewModelActivity(), ArgumentProvider<String> {
     private val viewModelSimple by viewModel<LearnKodeinViewModelSimple>()
 
-    private val viewModelComplex by lazy {
-        ViewModelProvider(
-            this,
-            kodein.on(this as ArgumentProvider<String>)
-                .instance(TAGGG)
-        ).get(LearnKodeinViewModelComplex::class.java)
-    }
+    private val viewModelComplex by viewModelWithArg<LearnKodeinViewModelComplex, ArgumentProvider<String>>(this)
+//    private val viewModelComplex by lazy {
+//        ViewModelProvider(
+//            this,
+//            kodein.on(this as ArgumentProvider<String>)
+//                .instance(TAGGG)
+//        ).get(LearnKodeinViewModelComplex::class.java)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
