@@ -21,6 +21,6 @@
         android:layout_height="match_parent"
         android:layout_margin="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/activity_list_item"/>
+        tools:listitem="@layout/activity_simple_list_person_item"/>
 
 </LinearLayout>

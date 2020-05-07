@@ -9,15 +9,15 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.learn.everything.R
-import kotlinx.android.synthetic.main.activity_list.*
-import kotlinx.android.synthetic.main.activity_list_item.view.*
+import kotlinx.android.synthetic.main.activity_simple_list.*
+import kotlinx.android.synthetic.main.activity_simple_list_person_item.view.*
 
-class ListActivity : AppCompatActivity() {
+class SimpleListActivity : AppCompatActivity() {
     private val adapter: PersonAdapter by lazy { PersonAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list)
+        setContentView(R.layout.activity_simple_list)
         personRecyclerView.adapter = adapter
 
         var count = 0
@@ -52,7 +52,7 @@ class ListActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun createIntent(context: Context) = Intent(context, ListActivity::class.java)
+        fun createIntent(context: Context) = Intent(context, SimpleListActivity::class.java)
     }
 
     private inner class PersonAdapter : RecyclerView.Adapter<PersonViewHolder>() {
@@ -60,7 +60,8 @@ class ListActivity : AppCompatActivity() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
             val inflater = LayoutInflater.from(parent.context)
-            val itemView = inflater.inflate(R.layout.activity_list_item, parent, false)
+            val itemView =
+                inflater.inflate(R.layout.activity_simple_list_person_item, parent, false)
             return PersonViewHolder(itemView)
         }
 
@@ -81,7 +82,7 @@ class ListActivity : AppCompatActivity() {
         fun bind(person: Person) {
             itemView.nameTextView.alpha = 0f
             itemView.nameTextView.animate().apply {
-                duration = 100
+                duration = 500
             }.alpha(1f)
                 .start()
             itemView.nameTextView.text = person.name

@@ -12,7 +12,7 @@ class LearnListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learn_list)
         listButton.setOnClickListener {
-            startActivity(ListActivity.createIntent(this))
+            startActivity(SimpleListActivity.createIntent(this))
         }
     }
 
