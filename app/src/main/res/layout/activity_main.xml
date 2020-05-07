@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
-        android:text="Learn toolbar"/>
+        android:text="Learn Toolbar"/>
 
     <Button
         android:id="@+id/learnKodein"
@@ -22,5 +22,13 @@
         android:layout_gravity="center"
         android:layout_margin="8dp"
         android:text="Learn Kodein"/>
+
+    <Button
+        android:id="@+id/learnList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Learn List"/>
 
 </LinearLayout>

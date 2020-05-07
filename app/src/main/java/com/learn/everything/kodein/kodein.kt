@@ -26,7 +26,7 @@ private fun viewModelModule() = Kodein.Module(name = "ViewModel") {
         LearnKodeinViewModelSimple(instance())
     }
 
-    bindViewModelWithArgument<LearnKodeinViewModelComplex>() with
+    bindViewModelWithArgument<LearnKodeinViewModelComplex, ArgumentProvider<String>>() with
             contexted<ArgumentProvider<String>>().provider {
                 LearnKodeinViewModelComplex(
                     context,
@@ -35,23 +35,17 @@ private fun viewModelModule() = Kodein.Module(name = "ViewModel") {
             }
 }
 
-inline fun <reified VM : ViewModel> Kodein.Builder.bindViewModelWithArgument(
+inline fun <reified VM : ViewModel> Kodein.Builder.bindViewModel(
+    overrides: Boolean? = null
+): Kodein.Builder.TypeBinder<VM> = bind<VM>(tag = VM::class.java.simpleName, overrides = overrides)
+
+inline fun <reified VM : ViewModel, reified T> Kodein.Builder.bindViewModelWithArgument(
     overrides: Boolean? = null
 ): Kodein.Builder.TypeBinder<VM> {
     bind<ViewModelProvider.Factory>(
         tag = VM::class.java.simpleName
-    ) with contexted<ArgumentProvider<String>>().provider {
+    ) with contexted<T>().provider {
         ViewModelFactory.create(context)
     }
-    return bindViewModel()
+    return bindViewModel(overrides)
 }
-
-
-inline fun <reified VM : ViewModel> Kodein.Builder.bindViewModel(
-    overrides: Boolean? = null
-): Kodein.Builder.TypeBinder<VM> = bind<VM>(
-    tag = VM::class.java.simpleName,
-    overrides = overrides
-)
-
-
