@@ -38,6 +38,7 @@
         <activity android:name=".kodein.LearnKodeinActivity"/>
         <activity android:name=".list.SimpleListActivity"/>
         <activity android:name=".list.LearnListActivity"/>
+        <activity android:name=".list.ListDifferActivity"/>
 
     </application>
 </manifest>

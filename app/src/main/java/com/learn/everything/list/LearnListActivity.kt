@@ -11,8 +11,11 @@ class LearnListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learn_list)
-        listButton.setOnClickListener {
+        simpleListButton.setOnClickListener {
             startActivity(SimpleListActivity.createIntent(this))
+        }
+        listDifferButton.setOnClickListener {
+            startActivity(ListDifferActivity.createIntent(this))
         }
     }
 

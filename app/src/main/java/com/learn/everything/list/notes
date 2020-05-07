@@ -1,0 +1,70 @@
+Things to show (show both hard and basic things):
+
+tools:listitem=""
+
+usage of inner class
+
+ListDiffer types and usages.
+There are many types so therefore there can be confusion
+
+stableId usage
+
+Things you have to remember to do:
+- Set layout manager
+- inflate with "false" parameter
+
+Difference between
+- areItemsTheSame
+- areContentsTheSame
+
+Does usage of "lazy" cause a memory leak?
+
+LayoutContainer usage, how to bind views to things
+
+Lists with multiple view holders
+
+Difference between onCreate and onBind with specifici use cases
+
+BE careful when modifying list and setting mutable list,
+    it will not work correctly when the same list object is provided
+    therefore a list copy is needed.
+
+
+SHOW:
+
+DiffUtil - Low level class for calculating different between lists
+    and dispatching callbacks
+
+ListUpdateCallback - contains possible list modification methods
+
+AsyncListDiffer -
+
+ListAdapter -
+
+
+
+
+
+--------------
+
+Operations to demonstrate:
+
+Item remove
+
+Item insert
+
+Item move
+
+Item swap
+
+Item change/update???
+
+
+
+
+-----------
+
+TODO:
+Situations where you have to save state (such as checkBox in region select)
+Check out SortedAdapter
+changePayload
