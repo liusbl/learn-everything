@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.learn.everything.R
+import com.learn.everything.list.list_differ.ListDifferActivity
+import com.learn.everything.list.simple.SimpleListActivity
 import kotlinx.android.synthetic.main.activity_learn_list.*
 
 class LearnListActivity : AppCompatActivity() {

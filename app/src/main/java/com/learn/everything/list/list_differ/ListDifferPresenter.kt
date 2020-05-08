@@ -1,15 +1,12 @@
-package com.learn.everything.list
+package com.learn.everything.list.list_differ
 
-/**
- * Remove item
- *
- * Insert item
- */
 class ListDifferPresenter(
     private val view: ListDifferView
 ) {
-    private val itemToRemove = Person("2", "Kyle")
-    private val itemToMove = Person("4", "Gerald")
+    private val itemToRemove =
+        Person("2", "Kyle")
+    private val itemToMove =
+        Person("4", "Gerald")
     private val personList = mutableListOf(
         Person("0", "Cartman"),
         Person("1", "Stan"),
@@ -31,17 +28,20 @@ class ListDifferPresenter(
         Person("17", "Scott Tenorman"),
         Person("18", "Craig")
     )
-    private var modification = Modification.REMOVE
+    private var modification =
+        Modification.REMOVE
 
     fun onNextClick() {
         when (modification) {
             Modification.REMOVE -> {
                 personList.remove(itemToRemove)
-                modification = Modification.INSERT
+                modification =
+                    Modification.INSERT
             }
             Modification.INSERT -> {
                 personList.add(2, itemToRemove)
-                modification = Modification.MOVE
+                modification =
+                    Modification.MOVE
             }
             Modification.MOVE -> {
                 if (personList[4] == itemToMove) {
@@ -51,13 +51,15 @@ class ListDifferPresenter(
                     personList.remove(itemToMove)
                     personList.add(4, itemToMove)
                 }
-                modification = Modification.SWAP
+                modification =
+                    Modification.SWAP
             }
             Modification.SWAP -> {
                 val item10 = personList[10]
                 personList[10] = personList[11]
                 personList[11] = item10
-                modification = Modification.REMOVE
+                modification =
+                    Modification.REMOVE
             }
         }
         // THIS IS IMPORTANT, NEEDS TO BE DEMONSTRATED

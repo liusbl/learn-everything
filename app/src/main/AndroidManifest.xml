@@ -36,9 +36,9 @@
         <activity android:name=".toolbar.ShareToolbarActivity"/>
         <activity android:name=".toolbar.SearchToolbarActivity"/>
         <activity android:name=".kodein.LearnKodeinActivity"/>
-        <activity android:name=".list.SimpleListActivity"/>
+        <activity android:name=".list.simple.SimpleListActivity"/>
         <activity android:name=".list.LearnListActivity"/>
-        <activity android:name=".list.ListDifferActivity"/>
+        <activity android:name=".list.list_differ.ListDifferActivity"/>
 
     </application>
 </manifest>

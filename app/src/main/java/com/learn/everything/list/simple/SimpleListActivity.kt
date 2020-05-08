@@ -1,4 +1,4 @@
-package com.learn.everything.list
+package com.learn.everything.list.simple
 
 import android.content.Context
 import android.content.Intent

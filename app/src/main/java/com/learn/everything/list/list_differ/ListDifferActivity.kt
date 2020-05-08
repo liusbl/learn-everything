@@ -1,4 +1,4 @@
-package com.learn.everything.list
+package com.learn.everything.list.list_differ
 
 import android.content.Context
 import android.content.Intent
@@ -14,9 +14,14 @@ import com.learn.everything.R
 import kotlinx.android.synthetic.main.activity_list_differ.*
 import kotlinx.android.synthetic.main.activity_list_differ_person_item.view.*
 
-class ListDifferActivity : AppCompatActivity(), ListDifferView {
+class ListDifferActivity : AppCompatActivity(),
+    ListDifferView {
     private val adapter by lazy { PersonAdapter() }
-    private val presenter by lazy { ListDifferPresenter(this) }
+    private val presenter by lazy {
+        ListDifferPresenter(
+            this
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
