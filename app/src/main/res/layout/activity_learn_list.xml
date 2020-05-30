@@ -16,6 +16,14 @@
         android:text="Simple List"/>
 
     <Button
+        android:id="@+id/itemFlipButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Item Flip"/>
+
+    <Button
         android:id="@+id/listDifferButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -14,14 +14,10 @@ import com.learn.everything.R
 import kotlinx.android.synthetic.main.activity_list_differ.*
 import kotlinx.android.synthetic.main.activity_list_differ_person_item.view.*
 
-class ListDifferActivity : AppCompatActivity(),
-    ListDifferView {
+// 3
+class ListDifferActivity : AppCompatActivity(), ListDifferView {
     private val adapter by lazy { PersonAdapter() }
-    private val presenter by lazy {
-        ListDifferPresenter(
-            this
-        )
-    }
+    private val presenter by lazy { ListDifferPresenter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +36,11 @@ class ListDifferActivity : AppCompatActivity(),
     }
 
     private inner class PersonAdapter : RecyclerView.Adapter<PersonViewHolder>() {
-        private val listDiffer = AsyncListDiffer<Person>(this, PersonDiffUtilCallback())
+        private val listDiffer = AsyncListDiffer(this, PersonDiffUtilCallback())
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
             val inflater = LayoutInflater.from(parent.context)
-            val itemView =
-                inflater.inflate(R.layout.activity_list_differ_person_item, parent, false)
+            val itemView = inflater.inflate(R.layout.activity_list_differ_person_item, parent, false)
             return PersonViewHolder(itemView)
         }
 
@@ -79,8 +74,8 @@ class ListDifferActivity : AppCompatActivity(),
         fun bind(person: Person) {
             itemView.nameTextView.alpha = 0f
             itemView.nameTextView.animate().apply {
-                duration = 500
-            }.alpha(1f)
+                    duration = 500
+                }.alpha(1f)
                 .start()
             itemView.nameTextView.text = person.name
         }

@@ -9,9 +9,12 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.learn.everything.R
+import com.learn.everything.list.item_flip.Person
+import com.learn.everything.list.item_flip.ItemFlipListActivity
 import kotlinx.android.synthetic.main.activity_simple_list.*
 import kotlinx.android.synthetic.main.activity_simple_list_person_item.view.*
 
+// 1
 class SimpleListActivity : AppCompatActivity() {
     private val adapter: PersonAdapter by lazy { PersonAdapter() }
 
@@ -25,25 +28,25 @@ class SimpleListActivity : AppCompatActivity() {
             if (count % 2 == 0) {
                 adapter.setItems(
                     listOf(
-                        Person("1", "Stan"),
-                        Person("2", "Kyle"),
-                        Person("3", "Cartman"),
-                        Person("4", "Kenny"),
-                        Person("5", "Craig"),
-                        Person("6", "Butters"),
-                        Person("7", "Ike")
+                        Person("0", "Stan"),
+                        Person("1", "Kyle"),
+                        Person("2", "Cartman"),
+                        Person("3", "Kenny"),
+                        Person("4", "Craig"),
+                        Person("5", "Butters"),
+                        Person("6", "Ike")
                     )
                 )
             } else {
                 adapter.setItems(
                     listOf(
-                        Person("1", "Stan"),
-                        Person("2", "Kyle"),
-                        Person("4", "Kenny"),
-                        Person("3", "Cartman"),
-                        Person("5", "Craig"),
-                        Person("6", "Butters"),
-                        Person("7", "Ike")
+                        Person("0", "Stan"),
+                        Person("1", "Kyle"),
+                        Person("3", "Kenny"), // Items flipped
+                        Person("2", "Cartman"), // Items flipped
+                        Person("4", "Craig"),
+                        Person("5", "Butters"),
+                        Person("6", "Ike")
                     )
                 )
             }
@@ -52,7 +55,7 @@ class SimpleListActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun createIntent(context: Context) = Intent(context, SimpleListActivity::class.java)
+        fun createIntent(context: Context) = Intent(context, ItemFlipListActivity::class.java)
     }
 
     private inner class PersonAdapter : RecyclerView.Adapter<PersonViewHolder>() {
