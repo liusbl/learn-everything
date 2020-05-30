@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.learn.everything.R
-import com.learn.everything.list.item_flip.ItemFlipListActivity
 import com.learn.everything.list.list_differ.ListDifferActivity
+import com.learn.everything.list.list_differ_fail.ListDifferFailActivity
 import com.learn.everything.list.simple.SimpleListActivity
 import kotlinx.android.synthetic.main.activity_learn_list.*
 
@@ -17,8 +17,8 @@ class LearnListActivity : AppCompatActivity() {
         simpleListButton.setOnClickListener {
             startActivity(SimpleListActivity.createIntent(this))
         }
-        itemFlipButton.setOnClickListener {
-            startActivity(ItemFlipListActivity.createIntent(this))
+        listDifferFailButton.setOnClickListener {
+            startActivity(ListDifferFailActivity.createIntent(this))
         }
         listDifferButton.setOnClickListener {
             startActivity(ListDifferActivity.createIntent(this))

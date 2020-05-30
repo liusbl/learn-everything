@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.learn.everything.R
-import com.learn.everything.list.item_flip.Person
-import com.learn.everything.list.item_flip.ItemFlipListActivity
 import kotlinx.android.synthetic.main.activity_simple_list.*
 import kotlinx.android.synthetic.main.activity_simple_list_person_item.view.*
 
@@ -55,7 +53,7 @@ class SimpleListActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun createIntent(context: Context) = Intent(context, ItemFlipListActivity::class.java)
+        fun createIntent(context: Context) = Intent(context, SimpleListActivity::class.java)
     }
 
     private inner class PersonAdapter : RecyclerView.Adapter<PersonViewHolder>() {
@@ -85,8 +83,8 @@ class SimpleListActivity : AppCompatActivity() {
         fun bind(person: Person) {
             itemView.nameTextView.alpha = 0f
             itemView.nameTextView.animate().apply {
-                duration = 500
-            }.alpha(1f)
+                    duration = 500
+                }.alpha(1f)
                 .start()
             itemView.nameTextView.text = person.name
         }

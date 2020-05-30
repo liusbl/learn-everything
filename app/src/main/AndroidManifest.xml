@@ -36,8 +36,8 @@
         <activity android:name=".toolbar.ShareToolbarActivity"/>
         <activity android:name=".toolbar.SearchToolbarActivity"/>
         <activity android:name=".kodein.LearnKodeinActivity"/>
-        <activity android:name=".list.item_flip.ItemFlipListActivity"/>
         <activity android:name=".list.LearnListActivity"/>
+        <activity android:name=".list.list_differ_fail.ListDifferFailActivity"/>
         <activity android:name=".list.list_differ.ListDifferActivity"/>
 
     </application>

@@ -1,4 +1,4 @@
-package com.learn.everything.list.list_differ
+package com.learn.everything.list.list_differ_fail
 
 import android.content.Context
 import android.content.Intent
@@ -11,28 +11,30 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.learn.everything.R
-import kotlinx.android.synthetic.main.activity_list_differ.*
-import kotlinx.android.synthetic.main.activity_list_differ_person_item.view.*
+import kotlinx.android.synthetic.main.activity_list_differ_fail.*
+import kotlinx.android.synthetic.main.activity_list_differ_fail_person_item.view.*
+import timber.log.Timber
 
-// 4
-class ListDifferActivity : AppCompatActivity(), ListDifferView {
+// 3
+class ListDifferFailActivity : AppCompatActivity(), ListDifferFailView {
     private val adapter by lazy { PersonAdapter() }
-    private val presenter by lazy { ListDifferPresenter(this) }
+    private val presenter by lazy { ListDifferFailPresenter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_differ)
+        setContentView(R.layout.activity_list_differ_fail)
         personRecyclerView.adapter = adapter
         nextButton.setOnClickListener { presenter.onNextClick() }
         backButton.setOnClickListener { presenter.onBackClick() }
     }
 
     override fun setPersonList(list: List<Person>) {
+        Timber.d("Setting list: $list")
         adapter.setItems(list)
     }
 
     companion object {
-        fun createIntent(context: Context) = Intent(context, ListDifferActivity::class.java)
+        fun createIntent(context: Context) = Intent(context, ListDifferFailActivity::class.java)
     }
 
     private inner class PersonAdapter : RecyclerView.Adapter<PersonViewHolder>() {
@@ -40,7 +42,7 @@ class ListDifferActivity : AppCompatActivity(), ListDifferView {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
             val inflater = LayoutInflater.from(parent.context)
-            val itemView = inflater.inflate(R.layout.activity_list_differ_person_item, parent, false)
+            val itemView = inflater.inflate(R.layout.activity_list_differ_fail_person_item, parent, false)
             return PersonViewHolder(itemView)
         }
 

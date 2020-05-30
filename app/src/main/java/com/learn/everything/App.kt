@@ -2,6 +2,7 @@ package com.learn.everything
 
 import android.app.Application
 import android.content.Context
+import timber.log.Timber
 
 class App : Application() {
     companion object {
@@ -12,5 +13,10 @@ class App : Application() {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         instance = this
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        Timber.plant(Timber.DebugTree())
     }
 }
