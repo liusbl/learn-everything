@@ -3,6 +3,19 @@ Things to show (show both hard and basic things):
 Show more concrete use cases for ListDiffer. Examlpes include:
     List expansion
 
+Usage of "private inner" things
+
+Accentuate changes and important bits
+
+Show why you shouldn't set click listeners or text watchers in onBind, but rather should use onCreate
+
+Don't forget to write down "false"
+
+Suggestion: extract "inflate" method to separate file
+
+Subtleties about onCreate method
+
+Demonstrate layoutContainer usage
 
 Demonstrate changes between files
 

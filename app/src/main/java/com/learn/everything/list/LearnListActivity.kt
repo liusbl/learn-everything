@@ -8,6 +8,7 @@ import com.learn.everything.R
 import com.learn.everything.list.list_differ.ListDifferActivity
 import com.learn.everything.list.list_differ_fail.ListDifferFailActivity
 import com.learn.everything.list.simple.SimpleListActivity
+import com.learn.everything.list.simple_base.SimpleBaseActivity
 import kotlinx.android.synthetic.main.activity_learn_list.*
 
 class LearnListActivity : AppCompatActivity() {
@@ -22,6 +23,9 @@ class LearnListActivity : AppCompatActivity() {
         }
         listDifferButton.setOnClickListener {
             startActivity(ListDifferActivity.createIntent(this))
+        }
+        simpleBaseButton.setOnClickListener {
+            startActivity(SimpleBaseActivity.createIntent(this))
         }
     }
 

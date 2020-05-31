@@ -1,9 +1,6 @@
-package com.learn.everything.list.list_differ
+package com.learn.everything.list.simple_base
 
-import com.learn.everything.list.simple_base.SimpleBaseView
-import com.learn.everything.list.simple_base.Person
-
-class ListDifferPresenter(
+class SimpleBasePresenter(
     private val view: SimpleBaseView
 ) {
     private val itemToRemove =

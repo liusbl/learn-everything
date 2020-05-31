@@ -11,13 +11,17 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.learn.everything.R
+import com.learn.everything.list.simple_base.SimpleBaseActivity
+import com.learn.everything.list.simple_base.SimpleBasePresenter
+import com.learn.everything.list.simple_base.SimpleBaseView
+import com.learn.everything.list.simple_base.Person
 import kotlinx.android.synthetic.main.activity_list_differ.*
 import kotlinx.android.synthetic.main.activity_list_differ_person_item.view.*
 
-// 4
-class ListDifferActivity : AppCompatActivity(), ListDifferView {
+// 3
+class ListDifferActivity : AppCompatActivity(), SimpleBaseView {
     private val adapter by lazy { PersonAdapter() }
-    private val presenter by lazy { ListDifferPresenter(this) }
+    private val presenter by lazy { SimpleBasePresenter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +36,7 @@ class ListDifferActivity : AppCompatActivity(), ListDifferView {
     }
 
     companion object {
-        fun createIntent(context: Context) = Intent(context, ListDifferActivity::class.java)
+        fun createIntent(context: Context) = Intent(context, SimpleBaseActivity::class.java)
     }
 
     private inner class PersonAdapter : RecyclerView.Adapter<PersonViewHolder>() {

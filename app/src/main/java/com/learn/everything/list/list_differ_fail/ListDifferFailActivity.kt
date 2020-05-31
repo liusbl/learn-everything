@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_list_differ_fail.*
 import kotlinx.android.synthetic.main.activity_list_differ_fail_person_item.view.*
 import timber.log.Timber
 
-// 3
+// 2
 class ListDifferFailActivity : AppCompatActivity(), ListDifferFailView {
     private val adapter by lazy { PersonAdapter() }
     private val presenter by lazy { ListDifferFailPresenter(this) }

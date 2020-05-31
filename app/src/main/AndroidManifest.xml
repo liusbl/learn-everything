@@ -38,7 +38,8 @@
         <activity android:name=".kodein.LearnKodeinActivity"/>
         <activity android:name=".list.LearnListActivity"/>
         <activity android:name=".list.list_differ_fail.ListDifferFailActivity"/>
-        <activity android:name=".list.list_differ.ListDifferActivity"/>
+        <activity android:name=".list.simple_base.SimpleBaseActivity"/>
+        <activity android:name=".list.simple.SimpleListActivity"/>
 
     </application>
 </manifest>
