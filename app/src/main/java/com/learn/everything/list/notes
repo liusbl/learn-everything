@@ -3,6 +3,10 @@ Things to show (show both hard and basic things):
 Show more concrete use cases for ListDiffer. Examlpes include:
     List expansion
 
+State synchronizatino between list items and data
+
+What about viewAttach/viewDetach?
+
 Usage of "private inner" things
 
 Accentuate changes and important bits

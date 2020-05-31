@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.learn.everything.R
+import com.learn.everything.list.binder.BinderActivity
 import com.learn.everything.list.list_differ.ListDifferActivity
 import com.learn.everything.list.list_differ_fail.ListDifferFailActivity
 import com.learn.everything.list.simple.SimpleListActivity
@@ -26,6 +27,9 @@ class LearnListActivity : AppCompatActivity() {
         }
         simpleBaseButton.setOnClickListener {
             startActivity(SimpleBaseActivity.createIntent(this))
+        }
+        binderButton.setOnClickListener {
+            startActivity(BinderActivity.createIntent(this))
         }
     }
 

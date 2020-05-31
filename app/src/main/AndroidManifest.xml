@@ -40,6 +40,7 @@
         <activity android:name=".list.list_differ_fail.ListDifferFailActivity"/>
         <activity android:name=".list.simple_base.SimpleBaseActivity"/>
         <activity android:name=".list.simple.SimpleListActivity"/>
+        <activity android:name=".list.binder.BinderActivity"/>
 
     </application>
 </manifest>

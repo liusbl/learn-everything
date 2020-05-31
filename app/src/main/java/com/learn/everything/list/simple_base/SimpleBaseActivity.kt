@@ -30,8 +30,7 @@ class SimpleBaseActivity : AppCompatActivity(), SimpleBaseView {
         fun createIntent(context: Context) = Intent(context, SimpleBaseActivity::class.java)
     }
 
-    private inner class PersonAdapter :
-        BaseAdapter<Person, PersonViewHolder>(R.layout.activity_simple_base_person_item) {
+    private inner class PersonAdapter : BaseAdapter<Person, PersonViewHolder>(R.layout.activity_simple_base_person_item) {
         override fun createViewHolder(itemView: View) = PersonViewHolder(itemView)
     }
 
