@@ -5,12 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.learn.everything.R
-import com.learn.everything.list.binder.BinderActivity
-import com.learn.everything.list.layout_container.LayoutContainerActivity
-import com.learn.everything.list.list_differ.ListDifferActivity
-import com.learn.everything.list.list_differ_fail.ListDifferFailActivity
-import com.learn.everything.list.simple.SimpleListActivity
-import com.learn.everything.list.simple_base.SimpleBaseActivity
+import com.learn.everything.list._01_simple.SimpleListActivity
+import com.learn.everything.list._02_list_differ_fail.ListDifferFailActivity
+import com.learn.everything.list._03_list_differ.ListDifferActivity
+import com.learn.everything.list._04_simple_base.SimpleBaseActivity
+import com.learn.everything.list._05_binder.BinderActivity
+import com.learn.everything.list._06_layout_container.LayoutContainerActivity
 import kotlinx.android.synthetic.main.activity_learn_list.*
 
 class LearnListActivity : AppCompatActivity() {
