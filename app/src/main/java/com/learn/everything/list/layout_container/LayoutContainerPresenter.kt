@@ -3,10 +3,8 @@ package com.learn.everything.list.layout_container
 class LayoutContainerPresenter(
     private val view: LayoutContainerView
 ) {
-    private val itemToRemove =
-        Person("2", "Kyle")
-    private val itemToMove =
-        Person("4", "Gerald")
+    private val itemToRemove = Person("2", "Kyle")
+    private val itemToMove = Person("4", "Gerald")
     private val personList = mutableListOf(
         Person("0", "Cartman"),
         Person("1", "Stan"),
@@ -28,8 +26,7 @@ class LayoutContainerPresenter(
         Person("17", "Scott Tenorman"),
         Person("18", "Craig")
     )
-    private var modification =
-        Modification.REMOVE
+    private var modification = Modification.REMOVE
 
     fun onNextClick() {
         when (modification) {
