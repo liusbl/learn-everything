@@ -1,4 +1,4 @@
-package com.learn.everything.list._07_listener_fail.lib
+package com.learn.everything.list._05_binder.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class SingleViewTypeAdapter<T>(
     @LayoutRes private val itemLayout: Int
-) : RecyclerView.Adapter<BinderViewHolder<T>>(),
-    Binder<T> {
+) : RecyclerView.Adapter<BinderViewHolder<T>>() {
     private val diffCallback: DiffUtil.ItemCallback<T> =
         DefaultDiffUtilItemCallback()
     private val listDiffer: AsyncListDiffer<T> by lazy { AsyncListDiffer(this, diffCallback) }
@@ -19,15 +18,17 @@ abstract class SingleViewTypeAdapter<T>(
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(itemLayout, parent, false)
         return object : BinderViewHolder<T>(itemView) {
-            override fun onBind(viewHolder: BinderViewHolder<T>, item: T) {
-                this@SingleViewTypeAdapter.onBind(viewHolder, item)
+            override fun onBind(item: T) {
+                onBind(this, item)
             }
         }
     }
 
     override fun onBindViewHolder(viewHolder: BinderViewHolder<T>, position: Int) {
-        viewHolder.onBind(viewHolder, listDiffer.currentList[position])
+        viewHolder.onBind(listDiffer.currentList[position])
     }
+
+    abstract fun onBind(viewHolder: BinderViewHolder<T>, item: T)
 
     override fun getItemCount() = listDiffer.currentList.size
 

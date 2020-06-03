@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.learn.everything.R
-import com.learn.everything.list._05_binder.lib.BinderViewHolder
-import com.learn.everything.list._05_binder.lib.SingleViewTypeAdapter
+import com.learn.everything.list._05_binder.list.BinderViewHolder
+import com.learn.everything.list._05_binder.list.SingleViewTypeAdapter
 import kotlinx.android.synthetic.main.activity_list_binder.*
 import kotlinx.android.synthetic.main.activity_list_binder_person_item.view.*
 

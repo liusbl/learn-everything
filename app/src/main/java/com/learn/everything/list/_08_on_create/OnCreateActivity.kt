@@ -7,8 +7,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import com.learn.everything.R
-import com.learn.everything.list._08_on_create.lib.SingleViewTypeAdapter
-import com.learn.everything.list._08_on_create.lib.BinderViewHolder
+import com.learn.everything.list._08_on_create.list.SingleViewTypeAdapter
+import com.learn.everything.list._08_on_create.list.BinderViewHolder
 import kotlinx.android.synthetic.main.activity_list_listener_fail.*
 import kotlinx.android.synthetic.main.activity_list_listener_fail_person_item.*
 

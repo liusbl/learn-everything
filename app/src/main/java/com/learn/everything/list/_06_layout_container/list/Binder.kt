@@ -1,4 +1,4 @@
-package com.learn.everything.list._07_listener_fail.lib
+package com.learn.everything.list._06_layout_container.list
 
 interface Binder<T> {
     fun onBind(viewHolder: BinderViewHolder<T>, item: T)

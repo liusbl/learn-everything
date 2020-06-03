@@ -1,4 +1,4 @@
-package com.learn.everything.list._05_binder.lib
+package com.learn.everything.list._08_on_create.list
 
 import androidx.recyclerview.widget.DiffUtil
 

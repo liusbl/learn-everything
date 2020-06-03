@@ -1,4 +1,4 @@
-package com.learn.everything.list._08_on_create.lib
+package com.learn.everything.list._08_on_create.list
 
 import android.view.LayoutInflater
 import android.view.View
