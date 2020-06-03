@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BinderAdapter<T : Any>(
+abstract class SingleViewTypeAdapter<T : Any>(
     @LayoutRes private val itemLayout: Int
 ) : RecyclerView.Adapter<BinderViewHolder<T>>(), Binder<T> {
     private val diffCallback: DiffUtil.ItemCallback<T> =
@@ -45,12 +45,12 @@ abstract class BinderAdapter<T : Any>(
 
         override fun onCreate(viewHolder: BinderViewHolder<T>) {
             if (!isCreated) {
-                this@BinderAdapter.onCreate(viewHolder)
+                this@SingleViewTypeAdapter.onCreate(viewHolder)
             }
         }
 
         override fun onBind(viewHolder: BinderViewHolder<T>, item: T) {
-            this@BinderAdapter.onBind(viewHolder, item)
+            this@SingleViewTypeAdapter.onBind(viewHolder, item)
         }
     }
 }

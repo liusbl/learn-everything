@@ -7,7 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import com.learn.everything.R
-import com.learn.everything.list._07_listener_fail.lib.BinderAdapter
+import com.learn.everything.list._07_listener_fail.lib.SingleViewTypeAdapter
 import com.learn.everything.list._07_listener_fail.lib.BinderViewHolder
 import kotlinx.android.synthetic.main.activity_list_listener_fail.*
 import kotlinx.android.synthetic.main.activity_list_listener_fail_person_item.*
@@ -33,7 +33,7 @@ class ListenerFailActivity : AppCompatActivity(), ListenerFailView {
         fun createIntent(context: Context) = Intent(context, ListenerFailActivity::class.java)
     }
 
-    private inner class PersonAdapter : BinderAdapter<Person>(R.layout.activity_list_listener_fail_person_item) {
+    private inner class PersonAdapter : SingleViewTypeAdapter<Person>(R.layout.activity_list_listener_fail_person_item) {
         override fun onBind(viewHolder: BinderViewHolder<Person>, item: Person) {
             viewHolder.nameEditText.alpha = 0f
             viewHolder.nameEditText.animate()

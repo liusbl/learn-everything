@@ -1,4 +1,4 @@
-package com.learn.everything.list._06_layout_container
+package com.learn.everything.list._05_binder.lib
 
 import androidx.recyclerview.widget.DiffUtil
 

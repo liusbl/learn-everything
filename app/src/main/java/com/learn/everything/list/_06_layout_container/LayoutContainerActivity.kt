@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.learn.everything.R
+import com.learn.everything.list._06_layout_container.lib.BinderViewHolder
+import com.learn.everything.list._06_layout_container.lib.SingleViewTypeAdapter
 import kotlinx.android.synthetic.main.activity_list_layout_container.*
 import kotlinx.android.synthetic.main.activity_list_layout_container_person_item.*
 
@@ -29,7 +31,7 @@ class LayoutContainerActivity : AppCompatActivity(), LayoutContainerView {
         fun createIntent(context: Context) = Intent(context, LayoutContainerActivity::class.java)
     }
 
-    private inner class PersonAdapter : BinderAdapter<Person>(R.layout.activity_list_layout_container_person_item) {
+    private inner class PersonAdapter : SingleViewTypeAdapter<Person>(R.layout.activity_list_layout_container_person_item) {
         override fun onBind(viewHolder: BinderViewHolder<Person>, item: Person) {
             viewHolder.nameTextView.alpha = 0f
             viewHolder.nameTextView.animate()
