@@ -7,6 +7,10 @@ State synchronizatino between list items and data
 
 What about viewAttach/viewDetach?
 
+what EXACTLY should go to onCreate method? Provide very concrete examples
+    EditText text watchers
+    click listeners
+
 Usage of "private inner" things
 
 Accentuate changes and important bits

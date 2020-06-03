@@ -11,6 +11,7 @@ import com.learn.everything.list._03_list_differ.ListDifferActivity
 import com.learn.everything.list._04_simple_base.SimpleBaseActivity
 import com.learn.everything.list._05_binder.BinderActivity
 import com.learn.everything.list._06_layout_container.LayoutContainerActivity
+import com.learn.everything.list._07_on_create.OnCreateActivity
 import kotlinx.android.synthetic.main.activity_learn_list.*
 
 class LearnListActivity : AppCompatActivity() {
@@ -34,6 +35,9 @@ class LearnListActivity : AppCompatActivity() {
         }
         layoutContainerButton.setOnClickListener {
             startActivity(LayoutContainerActivity.createIntent(this))
+        }
+        onCreateButton.setOnClickListener {
+            startActivity(OnCreateActivity.createIntent(this))
         }
     }
 
