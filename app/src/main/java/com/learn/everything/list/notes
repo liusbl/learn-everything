@@ -11,6 +11,8 @@ what EXACTLY should go to onCreate method? Provide very concrete examples
     EditText text watchers
     click listeners
 
+Add more comments with each update
+
 Usage of "private inner" things
 
 Accentuate changes and important bits
