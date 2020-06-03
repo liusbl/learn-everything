@@ -1,9 +1,9 @@
-package com.learn.everything.list._07_on_create
+package com.learn.everything.list._07_listener_fail
 
 import timber.log.Timber
 
-class OnCreatePresenter(
-    private val view: OnCreateView
+class ListenerFailPresenter(
+    private val view: ListenerFailView
 ) {
     private val itemToRemove = Person("2", "Kyle")
     private val itemToMove = Person("4", "Gerald")

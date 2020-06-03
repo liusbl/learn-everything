@@ -43,7 +43,7 @@
         <activity android:name=".list._06_layout_container.LayoutContainerActivity"/>
         <activity android:name=".list._05_binder.BinderActivity"/>
         <activity android:name=".list._03_list_differ.ListDifferActivity"/>
-        <activity android:name=".list._07_on_create.OnCreateActivity"/>
+        <activity android:name=".list._07_listener_fail.ListenerFailActivity"/>
 
     </application>
 </manifest>

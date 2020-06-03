@@ -1,4 +1,4 @@
-package com.learn.everything.list._07_on_create.lib
+package com.learn.everything.list._07_listener_fail.lib
 
 import androidx.recyclerview.widget.DiffUtil
 
