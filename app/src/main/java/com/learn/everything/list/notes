@@ -1,5 +1,9 @@
 Things to show (show both hard and basic things):
 
+CONSIDER SEPARATING onCreate+onBind methods from Binder, to make it a true interface
+
+Perform validation to check if all enums are used for list type / also if none are used twice
+
 Show more concrete use cases for ListDiffer. Examlpes include:
     List expansion
 
@@ -71,6 +75,19 @@ AsyncListDiffer -
 ListAdapter -
 
 
+
+
+interface ItemBinder<T : Any> {
+    // Both are open since there are valid cases where neither onCreate and onBind is needed (such as dividers)
+
+    fun onCreate(viewHolder: BinderViewHolder<T>) {
+        // Empty
+    }
+
+    fun onBind(viewHolder: BinderViewHolder<T>, item: T) {
+        // Empty
+    }
+}
 
 
 
