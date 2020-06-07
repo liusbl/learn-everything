@@ -45,6 +45,7 @@
         <activity android:name=".list._03_list_differ.ListDifferActivity"/>
         <activity android:name=".list._08_on_create.OnCreateActivity"/>
         <activity android:name=".list._09_diff_callback.DiffCallbackActivity"/>
+        <activity android:name=".list._10_multi_view.MultiViewActivity"/>
 
     </application>
 </manifest>

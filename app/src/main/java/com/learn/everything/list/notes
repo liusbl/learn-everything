@@ -9,6 +9,10 @@ Show more concrete use cases for ListDiffer. Examlpes include:
 
 State synchronizatino between list items and data
 
+Extract inflate to separate file
+
+Add comments everywhere
+
 What about viewAttach/viewDetach?
 
 what EXACTLY should go to onCreate method? Provide very concrete examples
