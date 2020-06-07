@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
+import com.learn.everything.list._07_listener_fail.list.DefaultDiffUtilItemCallback
 
 abstract class BaseAdapter<T, VH : BaseViewHolder<T>>(
     @LayoutRes private val itemLayout: Int
 ) : RecyclerView.Adapter<VH>() {
-    private val listDiffer = AsyncListDiffer(this, DefaultDiffUtilItemCallback<T>())
+    private val diffCallback = DefaultDiffUtilItemCallback<T>()
+    private val listDiffer by lazy { AsyncListDiffer(this, diffCallback) }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val inflater = LayoutInflater.from(parent.context)

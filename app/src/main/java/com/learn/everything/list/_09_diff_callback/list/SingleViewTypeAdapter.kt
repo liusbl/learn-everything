@@ -4,20 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class SingleViewTypeAdapter<T : Any>(
     @LayoutRes private val itemLayout: Int
 ) : RecyclerView.Adapter<BinderViewHolder<T>>(), Binder<T> {
-    private val diffCallback: DiffUtil.ItemCallback<T> =
-        DefaultDiffUtilItemCallback()
-    private val listDiffer: AsyncListDiffer<T> by lazy { AsyncListDiffer(this, diffCallback) }
+    private val diffCallback = DefaultDiffUtilItemCallback<T>()
+    private val listDiffer by lazy { AsyncListDiffer(this, diffCallback) }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BinderViewHolder<T> {
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(itemLayout, parent, false)
-        return SingleViewHolder(this, itemView)
+        return BinderViewHolder(this, itemView)
     }
 
     override fun onBindViewHolder(viewHolder: BinderViewHolder<T>, position: Int) {

@@ -15,6 +15,7 @@ import com.learn.everything.list._04_simple_base.SimpleBaseActivity
 import com.learn.everything.list._04_simple_base.SimpleBasePresenter
 import com.learn.everything.list._04_simple_base.SimpleBaseView
 import com.learn.everything.list._04_simple_base.Person
+import com.learn.everything.list._07_listener_fail.list.DefaultDiffUtilItemCallback
 import kotlinx.android.synthetic.main.activity_list_differ.*
 import kotlinx.android.synthetic.main.activity_list_differ_person_item.view.*
 
@@ -40,7 +41,8 @@ class ListDifferActivity : AppCompatActivity(), SimpleBaseView {
     }
 
     private inner class PersonAdapter : RecyclerView.Adapter<PersonViewHolder>() {
-        private val listDiffer = AsyncListDiffer(this, PersonDiffUtilCallback())
+        private val diffCallback = PersonDiffUtilCallback()
+        private val listDiffer by lazy { AsyncListDiffer(this, diffCallback) }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
             val inflater = LayoutInflater.from(parent.context)

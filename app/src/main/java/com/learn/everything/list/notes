@@ -1,8 +1,14 @@
 Things to show (show both hard and basic things):
 
+Other optimizations recycledViewPool, stableiD
+
 CONSIDER SEPARATING onCreate+onBind methods from Binder, to make it a true interface
 
 Perform validation to check if all enums are used for list type / also if none are used twice
+
+Figure out how to differentiate between different comments:
+    Explanatory comments
+    Other comments?
 
 Show more concrete use cases for ListDiffer. Examlpes include:
     List expansion

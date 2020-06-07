@@ -9,20 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class SingleViewTypeAdapter<T>(
     @LayoutRes private val itemLayout: Int
-) : RecyclerView.Adapter<BinderViewHolder<T>>(),
-    Binder<T> {
-    private val diffCallback: DiffUtil.ItemCallback<T> =
-        DefaultDiffUtilItemCallback()
-    private val listDiffer: AsyncListDiffer<T> by lazy { AsyncListDiffer(this, diffCallback) }
+) : RecyclerView.Adapter<BinderViewHolder<T>>(), Binder<T> {
+    private val diffCallback = DefaultDiffUtilItemCallback<T>()
+    private val listDiffer by lazy { AsyncListDiffer(this, diffCallback) }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BinderViewHolder<T> {
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(itemLayout, parent, false)
-        return object : BinderViewHolder<T>(itemView) {
-            override fun onBind(viewHolder: BinderViewHolder<T>, item: T) {
-                this@SingleViewTypeAdapter.onBind(viewHolder, item)
-            }
-        }
+        return BinderViewHolder(this, itemView)
     }
 
     override fun onBindViewHolder(viewHolder: BinderViewHolder<T>, position: Int) {
@@ -32,6 +26,6 @@ abstract class SingleViewTypeAdapter<T>(
     override fun getItemCount() = listDiffer.currentList.size
 
     fun setItems(list: List<T>) {
-        listDiffer.submitList(list)
+        listDiffer.submitList(list.toList())
     }
 }
