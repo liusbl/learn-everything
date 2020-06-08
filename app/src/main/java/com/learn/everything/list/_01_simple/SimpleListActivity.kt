@@ -12,7 +12,6 @@ import com.learn.everything.R
 import kotlinx.android.synthetic.main.activity_simple_list.*
 import kotlinx.android.synthetic.main.activity_simple_list_person_item.view.*
 
-// 1
 class SimpleListActivity : AppCompatActivity() {
     private val adapter: PersonAdapter by lazy { PersonAdapter() }
 
@@ -61,8 +60,7 @@ class SimpleListActivity : AppCompatActivity() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
             val inflater = LayoutInflater.from(parent.context)
-            val itemView =
-                inflater.inflate(R.layout.activity_simple_list_person_item, parent, false)
+            val itemView = inflater.inflate(R.layout.activity_simple_list_person_item, parent, false)
             return PersonViewHolder(itemView)
         }
 

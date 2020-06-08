@@ -4,6 +4,10 @@ Demonstrate both null and valid stable id
 
 Remove all TODOS
 
+Item Callbacks need to be implemented properlyh
+
+
+
 Add learning resources to this project
 
 Create a structure for adding easily finding appropriate files.
@@ -59,6 +63,20 @@ Make a list of all websites that could have relevant information:
     android dev slack
     Android Developer youtube channel
     conferences
+
+
+TODO
+class CallbackWrapper<T>(
+    val list: List<Calb<*>>
+) : DiffUtil.ItemCallback<T>() {
+    override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
+
+    }
+
+    override fun areContentsTheSame(oldItem: T, newItem: T): Boolean {
+        // Empty
+    }
+}
 
 
 Ways to find things
