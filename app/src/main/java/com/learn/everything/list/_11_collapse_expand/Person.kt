@@ -1,6 +1,6 @@
-package com.learn.everything.list._10_multi_view
+package com.learn.everything.list._11_collapse_expand
 
-import com.learn.everything.list._10_multi_view.list.ListItem
+import com.learn.everything.list._11_collapse_expand.list.ListItem
 
 sealed class PersonListItem(
     type: ListType,
@@ -12,7 +12,8 @@ sealed class PersonListItem(
     ) : PersonListItem(ListType.PERSON, id)
 
     data class Header(
-        val title: String
+        val title: String,
+        val isExpanded: Boolean
     ) : PersonListItem(ListType.HEADER, title)
 
     enum class ListType {

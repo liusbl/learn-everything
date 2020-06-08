@@ -1,20 +1,21 @@
-package com.learn.everything.list._10_multi_view
+package com.learn.everything.list._11_collapse_expand
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.learn.everything.R
-import com.learn.everything.list._10_multi_view.list.MultiViewTypeAdapter
+import com.learn.everything.list._10_multi_view.MultiViewActivity
+import com.learn.everything.list._11_collapse_expand.list.MultiViewTypeAdapter
 import kotlinx.android.synthetic.main.activity_list_multi_view.*
 
-class MultiViewActivity : AppCompatActivity(), MultiViewView {
+class CollapseExpandActivity : AppCompatActivity(), CollapseExpandView {
     private val adapter by lazy { PersonAdapter() }
-    private val presenter by lazy { MultiViewPresenter(this) }
+    private val presenter by lazy { CollapseExpandPresenter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_multi_view)
+        setContentView(R.layout.activity_list_collapse_expand)
         personRecyclerView.adapter = adapter
         presenter.onViewCreated()
     }
@@ -24,13 +25,13 @@ class MultiViewActivity : AppCompatActivity(), MultiViewView {
     }
 
     companion object {
-        fun createIntent(context: Context) = Intent(context, MultiViewActivity::class.java)
+        fun createIntent(context: Context) = Intent(context, CollapseExpandActivity::class.java)
     }
 
     private inner class PersonAdapter : MultiViewTypeAdapter<PersonListItem>(
         listOf(
             PersonBinder(),
-            HeaderBinder()
+            HeaderBinder(presenter::onHeaderClick)
         )
     )
 }

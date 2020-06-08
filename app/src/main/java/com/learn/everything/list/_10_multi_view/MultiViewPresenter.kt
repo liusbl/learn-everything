@@ -1,7 +1,5 @@
 package com.learn.everything.list._10_multi_view
 
-import timber.log.Timber
-
 class MultiViewPresenter(
     private val view: MultiViewView
 ) {
@@ -29,14 +27,11 @@ class MultiViewPresenter(
     private var personList = emptyList<PersonListItem>()
 
     fun onViewCreated() {
-        personList = initialList.groupBy { person -> person.name[0] }
+        personList = initialList.sortedBy { it.name }
+            .groupBy { person -> person.name[0] }
             .map { entry ->
                 listOf(PersonListItem.Header(entry.key.toString())) + entry.value
             }.flatten()
         view.setPersonList(personList)
-    }
-
-    fun onPersonUpdated(person: PersonListItem.Person) {
-        Timber.d("Person updated: $person")
     }
 }

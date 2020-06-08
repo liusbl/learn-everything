@@ -1,5 +1,9 @@
 Take all the old sandbox apps and move what was learnt to here.
 
+Demonstrate both null and valid stable id
+
+Remove all TODOS
+
 Add learning resources to this project
 
 Create a structure for adding easily finding appropriate files.
