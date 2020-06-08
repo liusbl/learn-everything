@@ -5,104 +5,38 @@ import timber.log.Timber
 class MultiViewPresenter(
     private val view: MultiViewView
 ) {
-    private val itemToRemove = Person("2", "Kyle")
-    private val itemToMove = Person("4", "Gerald")
-    private val personList = mutableListOf(
-        Person("0", "Cartman"),
-        Person("1", "Stan"),
-        itemToRemove,
-        Person("3", "Kenny"),
-        itemToMove,
-        Person("5", "Randy"),
-        Person("6", "Butters"),
-        Person("7", "Ike"),
-        Person("8", "Wendy"),
-        Person("9", "Ms. Chokesondick"),
-        Person("10", "Mackey"),
-        Person("11", "PC principal"),
-        Person("12", "Jimmy"),
-        Person("13", "Timmy"),
-        Person("14", "Garrison"),
-        Person("15", "Mr. Slave"),
-        Person("16", "Chef"),
-        Person("17", "Scott Tenorman"),
-        Person("18", "Craig")
+    private val initialList = listOf(
+        PersonListItem.Person("0", "Cartman"),
+        PersonListItem.Person("1", "Stan"),
+        PersonListItem.Person("2", "Kyle"),
+        PersonListItem.Person("3", "Kenny"),
+        PersonListItem.Person("4", "Gerald"),
+        PersonListItem.Person("5", "Randy"),
+        PersonListItem.Person("6", "Butters"),
+        PersonListItem.Person("7", "Ike"),
+        PersonListItem.Person("8", "Wendy"),
+        PersonListItem.Person("9", "Ms. Chokesondick"),
+        PersonListItem.Person("10", "Mackey"),
+        PersonListItem.Person("11", "PC principal"),
+        PersonListItem.Person("12", "Jimmy"),
+        PersonListItem.Person("13", "Timmy"),
+        PersonListItem.Person("14", "Garrison"),
+        PersonListItem.Person("15", "Mr. Slave"),
+        PersonListItem.Person("16", "Chef"),
+        PersonListItem.Person("17", "Scott Tenorman"),
+        PersonListItem.Person("18", "Craig")
     )
-    private var modification = Modification.REMOVE
+    private var personList = emptyList<PersonListItem>()
 
-    fun onNextClick() {
-        when (modification) {
-            Modification.REMOVE -> {
-                personList.remove(itemToRemove)
-                modification =
-                    Modification.INSERT
-            }
-            Modification.INSERT -> {
-                personList.add(2, itemToRemove)
-                modification =
-                    Modification.MOVE
-            }
-            Modification.MOVE -> {
-                if (personList[4] == itemToMove) {
-                    personList.remove(itemToMove)
-                    personList.add(7, itemToMove)
-                } else {
-                    personList.remove(itemToMove)
-                    personList.add(4, itemToMove)
-                }
-                modification =
-                    Modification.SWAP
-            }
-            Modification.SWAP -> {
-                val item10 = personList[10]
-                personList[10] = personList[11]
-                personList[11] = item10
-                modification =
-                    Modification.REMOVE
-            }
-        }
-        // THIS IS IMPORTANT, NEEDS TO BE DEMONSTRATED
-        view.setPersonList(personList.toList())
+    fun onViewCreated() {
+        personList = initialList.groupBy { person -> person.name[0] }
+            .map { entry ->
+                listOf(PersonListItem.Header(entry.key.toString())) + entry.value
+            }.flatten()
+        view.setPersonList(personList)
     }
 
-    fun onBackClick() {
-        modification = when (modification) {
-            Modification.REMOVE -> Modification.SWAP
-            Modification.INSERT -> Modification.REMOVE
-            Modification.MOVE -> Modification.INSERT
-            Modification.SWAP -> Modification.MOVE
-        }
-
-        when (modification) {
-            Modification.REMOVE -> {
-                personList.add(2, itemToRemove)
-            }
-            Modification.INSERT -> {
-                personList.remove(itemToRemove)
-            }
-            Modification.MOVE -> {
-                if (personList[4] == itemToMove) {
-                    personList.remove(itemToMove)
-                    personList.add(7, itemToMove)
-                } else {
-                    personList.remove(itemToMove)
-                    personList.add(4, itemToMove)
-                }
-            }
-            Modification.SWAP -> {
-                val item10 = personList[10]
-                personList[10] = personList[11]
-                personList[11] = item10
-            }
-        }
-        view.setPersonList(personList.toList())
-    }
-
-    fun onPersonUpdated(person: Person) {
+    fun onPersonUpdated(person: PersonListItem.Person) {
         Timber.d("Person updated: $person")
-    }
-
-    private enum class Modification {
-        REMOVE, INSERT, MOVE, SWAP
     }
 }

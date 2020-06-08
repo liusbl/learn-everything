@@ -8,7 +8,17 @@ Perform validation to check if all enums are used for list type / also if none a
 
 Figure out how to differentiate between different comments:
     Explanatory comments
+    Comments showing changes
+    Comments showing deleted/new things
     Other comments?
+
+Add final example with and without comments
+
+This requires a separate object for list (you cannot business object). Is that okay?
+
+Why enum?
+
+Perfor enum validation in Adapter (check if all enum values all used, also if no values are used twice)
 
 Show more concrete use cases for ListDiffer. Examlpes include:
     List expansion

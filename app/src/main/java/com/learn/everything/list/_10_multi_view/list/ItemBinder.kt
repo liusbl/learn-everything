@@ -1,7 +1,13 @@
 package com.learn.everything.list._10_multi_view.list
 
 interface ItemBinder<T : Any> {
-    fun onCreate(viewHolder: BinderViewHolder<T>)
+    // Sometimes not needed TODO add better comment with example
+    fun onCreate(viewHolder: BinderViewHolder<T>) {
+        // Empty
+    }
 
-    fun onBind(viewHolder: BinderViewHolder<T>, item: T)
+    // Sometimes not needed TODO add better comment with example
+    fun onBind(viewHolder: BinderViewHolder<T>, item: T) {
+        // Empty
+    }
 }

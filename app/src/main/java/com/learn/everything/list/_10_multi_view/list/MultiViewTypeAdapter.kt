@@ -3,14 +3,15 @@ package com.learn.everything.list._10_multi_view.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.learn.everything.list._09_diff_callback.list.DefaultDiffUtilItemCallback
 
+// TODO convert binderList to vararg
 abstract class MultiViewTypeAdapter<T : ListItem>(
-    private val binderList: List<LayoutBinder<*>>,
-    diffCallback: DiffUtil.ItemCallback<T> = DefaultDiffUtilItemCallback()
+    private val binderList: List<LayoutBinder<*>>
 ) : RecyclerView.Adapter<BinderViewHolder<T>>() {
-    private val listDiffer: AsyncListDiffer<T> by lazy { AsyncListDiffer<T>(this, diffCallback) }
+    private val diffCallback = DefaultDiffUtilItemCallback<T>()
+    private val listDiffer by lazy { AsyncListDiffer(this, diffCallback) }
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BinderViewHolder<T> {
@@ -28,7 +29,7 @@ abstract class MultiViewTypeAdapter<T : ListItem>(
         viewHolder.onBind(viewHolder, item)
     }
 
-    override fun getItemViewType(position: Int) = listDiffer.currentList[position].getViewType().ordinal
+    override fun getItemViewType(position: Int) = listDiffer.currentList[position].viewType.ordinal
 
     override fun getItemCount() = listDiffer.currentList.size
 

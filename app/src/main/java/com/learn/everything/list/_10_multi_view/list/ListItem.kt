@@ -1,9 +1,7 @@
 package com.learn.everything.list._10_multi_view.list
 
-interface ListItem {
-    open fun getViewType(): Enum<*> = DefaultViewType.EMPTY
-
-    enum class DefaultViewType {
-        EMPTY
-    }
-}
+// TODO maybe should be interface?
+open class ListItem(
+    val viewType: Enum<*>,
+    private val id: String?
+)
