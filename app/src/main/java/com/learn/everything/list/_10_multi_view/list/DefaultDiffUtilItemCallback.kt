@@ -2,9 +2,18 @@ package com.learn.everything.list._10_multi_view.list
 
 import androidx.recyclerview.widget.DiffUtil
 
-// FIXME: don't use this implementation
 class DefaultDiffUtilItemCallback<T> : DiffUtil.ItemCallback<T>() {
+    /**
+     * Should provide unique identifier of the item.
+     * FIXME this should check ids, not "==""
+     */
     override fun areItemsTheSame(oldItem: T, newItem: T) = oldItem == newItem
 
+    /**
+     * Determines whether items should be displayed differently.
+     * Called only if areItemsTheSame == false.
+     *
+     * Usually equals() method or "=="
+     */
     override fun areContentsTheSame(oldItem: T, newItem: T) = oldItem == newItem
 }

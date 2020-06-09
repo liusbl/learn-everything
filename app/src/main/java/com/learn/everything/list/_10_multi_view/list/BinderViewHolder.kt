@@ -4,9 +4,13 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 
-// REQUIRES build.gradle(app) update:  androidExtensions { experimental = true }
+/**
+ * Using LayoutContainer allows directly accessing synthetics and also is more optimized.
+ *
+ * REQUIRES build.gradle(app) update:  androidExtensions { experimental = true }
+ */
 class BinderViewHolder<T : Any>(
-    private val adapter: ItemBinder<T>,
+    private val adapterBinder: ItemBinder<T>,
     override val containerView: View
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer, ItemBinder<T> {
     private var isCreated = false
@@ -17,13 +21,16 @@ class BinderViewHolder<T : Any>(
         }
     lateinit var item: T
 
+    /**
+     * Only called once when viewHolder first calls onBindViewHolder
+     */
     override fun onCreate(viewHolder: BinderViewHolder<T>) {
         if (!isCreated) {
-            adapter.onCreate(viewHolder)
+            adapterBinder.onCreate(viewHolder)
         }
     }
 
     override fun onBind(viewHolder: BinderViewHolder<T>, item: T) {
-        adapter.onBind(viewHolder, item)
+        adapterBinder.onBind(viewHolder, item)
     }
 }

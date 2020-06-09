@@ -6,11 +6,14 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 import com.learn.everything.list._09_diff_callback.list.DefaultDiffUtilItemCallback
 
-// TODO convert binderList to vararg
 abstract class MultiViewTypeAdapter<T : ListItem>(
     private val binderList: List<LayoutBinder<*>>
 ) : RecyclerView.Adapter<BinderViewHolder<T>>() {
     private val diffCallback = DefaultDiffUtilItemCallback<T>()
+    /**
+     * AsyncListDiffer automatically determines changes between old and new list,
+     * making the appropriate onItemChanged, onItemMoved, etc. method calls.
+     */
     private val listDiffer by lazy { AsyncListDiffer(this, diffCallback) }
 
     @Suppress("UNCHECKED_CAST")
@@ -29,15 +32,18 @@ abstract class MultiViewTypeAdapter<T : ListItem>(
         viewHolder.onBind(viewHolder, item)
     }
 
+    /**
+     * When using multiple viewTypes, getItemViewType must be overriden.
+     * Here we provide the Enum value.
+     */
     override fun getItemViewType(position: Int) = listDiffer.currentList[position].viewType.ordinal
 
     override fun getItemCount() = listDiffer.currentList.size
 
     /**
-     * The item list is first wrapped as a new list, in order to avoid mutations of the list in an unintended scope.
-     * Then all of the item IDs are adjusted to a more stable variant, in accordance to:
-     *  * if the ID is a null - create a unique ID,
-     *  * if the ID is not a null - append the ViewType and make it unique to that ViewType.
+     * Recreating the list with "toList()" is necessary,
+     * because even if you provide the same instance of a list,
+     * then AsyncListDiffer will not trigger.
      */
     fun setItems(items: List<T>) {
         listDiffer.submitList(items.toList())

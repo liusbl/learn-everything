@@ -10,6 +10,10 @@ abstract class SingleViewTypeAdapter<T : Any>(
     @LayoutRes private val itemLayout: Int
 ) : RecyclerView.Adapter<BinderViewHolder<T>>(), ItemBinder<T> {
     private val diffCallback = DefaultDiffUtilItemCallback<T>()
+    /**
+     * AsyncListDiffer automatically determines changes between old and new list,
+     * making the appropriate onItemChanged, onItemMoved, etc. method calls.
+     */
     private val listDiffer by lazy { AsyncListDiffer(this, diffCallback) }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BinderViewHolder<T> {
@@ -27,7 +31,12 @@ abstract class SingleViewTypeAdapter<T : Any>(
 
     override fun getItemCount() = listDiffer.currentList.size
 
+    /**
+     * Recreating the list with "toList()" is necessary,
+     * because even if you provide the same instance of a list,
+     * then AsyncListDiffer will not trigger.
+     */
     fun setItems(list: List<T>) {
-        listDiffer.submitList(list)
+        listDiffer.submitList(list.toList())
     }
 }

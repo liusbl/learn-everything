@@ -5,7 +5,6 @@ import com.learn.everything.list._10_multi_view.list.BinderViewHolder
 import com.learn.everything.list._10_multi_view.list.LayoutBinder
 import kotlinx.android.synthetic.main.activity_list_multi_view_header_item.*
 
-// TODO add collapsing
 class HeaderBinder : LayoutBinder<PersonListItem.Header>(
     R.layout.activity_list_multi_view_header_item,
     PersonListItem.ListType.HEADER
