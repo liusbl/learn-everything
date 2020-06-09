@@ -36,6 +36,10 @@ class ListDifferActivity : AppCompatActivity(), ListDifferView {
 
     private inner class PersonAdapter : RecyclerView.Adapter<PersonViewHolder>() {
         private val diffCallback = PersonDiffUtilCallback()
+        /**
+         * AsyncListDiffer automatically determines changes between old and new list,
+         * making the appropriate onItemChanged, onItemMoved, etc. method calls.
+         */
         private val listDiffer by lazy { AsyncListDiffer(this, diffCallback) }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
