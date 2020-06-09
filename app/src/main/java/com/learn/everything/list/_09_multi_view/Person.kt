@@ -1,6 +1,6 @@
-package com.learn.everything.list._10_multi_view
+package com.learn.everything.list._09_multi_view
 
-import com.learn.everything.list._10_multi_view.list.ListItem
+import com.learn.everything.list._09_multi_view.list.ListItem
 
 sealed class PersonListItem(
     type: ListType,

@@ -45,8 +45,7 @@
         <activity android:name=".list._06_layout_container.LayoutContainerActivity"/>
         <activity android:name=".list._07_listener_fail.ListenerFailActivity"/>
         <activity android:name=".list._08_on_create.OnCreateActivity"/>
-        <activity android:name=".list._09_diff_callback.DiffCallbackActivity"/>
-        <activity android:name=".list._10_multi_view.MultiViewActivity"/>
+        <activity android:name=".list._09_multi_view.MultiViewActivity"/>
 
     </application>
 </manifest>

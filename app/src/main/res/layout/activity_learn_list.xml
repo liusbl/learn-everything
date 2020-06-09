@@ -72,14 +72,6 @@
         android:text="On Create"/>
 
     <Button
-        android:id="@+id/diffCallbackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:text="Diff Callback"/>
-
-    <Button
         android:id="@+id/multiViewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

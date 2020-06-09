@@ -1,4 +1,4 @@
-package com.learn.everything.list._10_multi_view
+package com.learn.everything.list._09_multi_view
 
 class MultiViewPresenter(
     private val view: MultiViewView

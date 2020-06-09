@@ -1,4 +1,4 @@
-package com.learn.everything.list._10_multi_view.list
+package com.learn.everything.list._09_multi_view.list
 
 interface ItemBinder<T : Any> {
     /**

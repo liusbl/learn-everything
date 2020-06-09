@@ -1,8 +1,8 @@
-package com.learn.everything.list._10_multi_view
+package com.learn.everything.list._09_multi_view
 
 import com.learn.everything.R
-import com.learn.everything.list._10_multi_view.list.BinderViewHolder
-import com.learn.everything.list._10_multi_view.list.LayoutBinder
+import com.learn.everything.list._09_multi_view.list.BinderViewHolder
+import com.learn.everything.list._09_multi_view.list.LayoutBinder
 import kotlinx.android.synthetic.main.activity_list_multi_view_header_item.*
 
 class HeaderBinder : LayoutBinder<PersonListItem.Header>(
