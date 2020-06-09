@@ -4,7 +4,11 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 
-// REQUIRES build.gradle(app) update:  androidExtensions { experimental = true }
+/**
+ * Using LayoutContainer allows directly accessing synthetics and also is more optimized.
+ *
+ * REQUIRES build.gradle(app) update:  androidExtensions { experimental = true }
+ */
 class BinderViewHolder<T>(
     private val adapterBinder: Binder<T>,
     override val containerView: View

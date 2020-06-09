@@ -59,8 +59,7 @@ class LayoutContainerPresenter(
                     Modification.REMOVE
             }
         }
-        // THIS IS IMPORTANT, NEEDS TO BE DEMONSTRATED
-        view.setPersonList(personList.toList())
+        view.setPersonList(personList)
     }
 
     fun onBackClick() {
@@ -93,7 +92,7 @@ class LayoutContainerPresenter(
                 personList[11] = item10
             }
         }
-        view.setPersonList(personList.toList())
+        view.setPersonList(personList)
     }
 
     private enum class Modification {

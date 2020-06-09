@@ -10,7 +10,6 @@ import com.learn.everything.list._06_layout_container.list.SingleViewTypeAdapter
 import kotlinx.android.synthetic.main.activity_list_layout_container.*
 import kotlinx.android.synthetic.main.activity_list_layout_container_person_item.*
 
-// 6
 class LayoutContainerActivity : AppCompatActivity(), LayoutContainerView {
     private val adapter by lazy { PersonAdapter() }
     private val presenter by lazy { LayoutContainerPresenter(this) }
@@ -31,7 +30,12 @@ class LayoutContainerActivity : AppCompatActivity(), LayoutContainerView {
         fun createIntent(context: Context) = Intent(context, LayoutContainerActivity::class.java)
     }
 
-    private inner class PersonAdapter : SingleViewTypeAdapter<Person>(R.layout.activity_list_layout_container_person_item) {
+    private inner class PersonAdapter : SingleViewTypeAdapter<Person>(
+        R.layout.activity_list_layout_container_person_item
+    ) {
+        /**
+         * No need to call viewHolder.itemView when using LayoutContainer
+         */
         override fun onBind(viewHolder: BinderViewHolder<Person>, item: Person) {
             viewHolder.nameTextView.alpha = 0f
             viewHolder.nameTextView.animate()
