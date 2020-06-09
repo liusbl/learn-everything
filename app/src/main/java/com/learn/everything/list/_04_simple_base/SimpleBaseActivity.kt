@@ -9,7 +9,6 @@ import com.learn.everything.R
 import kotlinx.android.synthetic.main.activity_list_simple_base.*
 import kotlinx.android.synthetic.main.activity_simple_base_person_item.view.*
 
-// 4
 class SimpleBaseActivity : AppCompatActivity(), SimpleBaseView {
     private val adapter by lazy { PersonAdapter() }
     private val presenter by lazy { SimpleBasePresenter(this) }
@@ -30,7 +29,9 @@ class SimpleBaseActivity : AppCompatActivity(), SimpleBaseView {
         fun createIntent(context: Context) = Intent(context, SimpleBaseActivity::class.java)
     }
 
-    private inner class PersonAdapter : BaseAdapter<Person, PersonViewHolder>(R.layout.activity_simple_base_person_item) {
+    private inner class PersonAdapter : BaseAdapter<Person, PersonViewHolder>(
+        R.layout.activity_simple_base_person_item
+    ) {
         override fun createViewHolder(itemView: View) = PersonViewHolder(itemView)
     }
 
