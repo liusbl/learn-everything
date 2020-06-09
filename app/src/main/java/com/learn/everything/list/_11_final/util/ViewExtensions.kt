@@ -4,6 +4,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 
+/**
+ * This should go into the project's generic utility package
+ */
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View = try {
     LayoutInflater.from(context).inflate(layoutRes, this, false)
 } catch (cause: InflateException) {
