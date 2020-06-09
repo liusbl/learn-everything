@@ -14,6 +14,7 @@ import com.learn.everything.list._06_layout_container.LayoutContainerActivity
 import com.learn.everything.list._07_listener_fail.ListenerFailActivity
 import com.learn.everything.list._08_on_create.OnCreateActivity
 import com.learn.everything.list._09_multi_view.MultiViewActivity
+import com.learn.everything.list._10_diff_callback.DiffCallbackActivity
 import kotlinx.android.synthetic.main.activity_learn_list.*
 
 class LearnListActivity : AppCompatActivity() {
@@ -46,6 +47,9 @@ class LearnListActivity : AppCompatActivity() {
         }
         multiViewButton.setOnClickListener {
             startActivity(MultiViewActivity.createIntent(this))
+        }
+        diffCallbackButton.setOnClickListener {
+            startActivity(DiffCallbackActivity.createIntent(this))
         }
     }
 

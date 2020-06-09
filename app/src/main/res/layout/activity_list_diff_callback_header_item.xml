@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:background="#22FFDD00"
-    android:padding="8dp">
+    android:layout_margin="8dp">
 
     <TextView
-        android:id="@+id/nameTextView"
+        android:id="@+id/headerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        tools:text="Person personeson"/>
+        android:layout_gravity="center|end"
+        android:background="#2222DD22"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        tools:text="A"/>
 
 </FrameLayout>

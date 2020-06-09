@@ -1,14 +1,16 @@
-package com.learn.everything.list._09_multi_view.list
+package com.learn.everything.list._10_diff_callback.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
+import timber.log.Timber
 
 abstract class MultiViewTypeAdapter<T : ListItem>(
     private val binderList: List<LayoutBinder<*>>
 ) : RecyclerView.Adapter<BinderViewHolder<T>>() {
     private val diffCallback = DefaultDiffUtilItemCallback<T>()
+
     /**
      * AsyncListDiffer automatically determines changes between old and new list,
      * making the appropriate onItemChanged, onItemMoved, etc. method calls.
@@ -43,8 +45,15 @@ abstract class MultiViewTypeAdapter<T : ListItem>(
      * Recreating the list with "toList()" is necessary,
      * because even if you provide the same instance of a list,
      * then AsyncListDiffer will not trigger.
+     *
+     * All of the item IDs are adjusted to a more stable variant, in accordance to:
+     *  if the ID is a null - create a unique ID,
+     *  if the ID is not a null - append the ViewType and make it unique to that ViewType.
      */
     fun setItems(list: List<T>) {
-        listDiffer.submitList(list.toList())
+        val adjustedList = list.toList().adjustIds()
+        Timber.d("list: ${list.joinToString { item -> "$item ${item.stableId}" }}")
+        Timber.d("adjustedList: ${adjustedList.joinToString { item -> "$item ${item.stableId}" }}")
+        listDiffer.submitList(adjustedList)
     }
 }
