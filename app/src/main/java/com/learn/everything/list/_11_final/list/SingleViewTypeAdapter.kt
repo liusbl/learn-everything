@@ -1,10 +1,10 @@
 package com.learn.everything.list._11_final.list
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import inflate
 
 /**
  * ListAdapter uses AsyncListDiffer to automatically determine changes between old and new list,
@@ -14,8 +14,7 @@ abstract class SingleViewTypeAdapter<T : ListItem>(
     @LayoutRes private val itemLayout: Int
 ) : ListAdapter<T, BinderViewHolder<T>>(DefaultDiffUtilItemCallback<T>()), ItemBinder<T> {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BinderViewHolder<T> {
-        val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(itemLayout, parent, false)
+        val itemView = parent.inflate(itemLayout)
         return BinderViewHolder(this, itemView)
     }
 

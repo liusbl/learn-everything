@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import inflate
 
 /**
  * ListAdapter uses AsyncListDiffer to automatically determine changes between old and new list,
@@ -16,8 +17,7 @@ abstract class MultiViewTypeAdapter<T : ListItem>(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BinderViewHolder<T> {
         val binder = binderList.firstOrNull { it.viewType.ordinal == viewType }
             ?: throw BinderNotFoundException(viewType, binderList)
-        val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(binder.itemLayout, parent, false)
+        val itemView = parent.inflate(binder.itemLayout)
         return BinderViewHolder(binder as ItemBinder<T>, itemView)
     }
 
