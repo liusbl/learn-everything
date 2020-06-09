@@ -12,7 +12,6 @@ import com.learn.everything.list._08_on_create.list.BinderViewHolder
 import kotlinx.android.synthetic.main.activity_list_listener_fail.*
 import kotlinx.android.synthetic.main.activity_list_listener_fail_person_item.*
 
-// 8
 class OnCreateActivity : AppCompatActivity(), OnCreateView {
     private val adapter by lazy { PersonAdapter() }
     private val presenter by lazy { OnCreatePresenter(this) }
