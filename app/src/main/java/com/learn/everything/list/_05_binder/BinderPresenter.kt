@@ -3,10 +3,8 @@ package com.learn.everything.list._05_binder
 class BinderPresenter(
     private val view: BinderView
 ) {
-    private val itemToRemove =
-        Person("2", "Kyle")
-    private val itemToMove =
-        Person("4", "Gerald")
+    private val itemToRemove = Person("2", "Kyle")
+    private val itemToMove = Person("4", "Gerald")
     private val personList = mutableListOf(
         Person("0", "Cartman"),
         Person("1", "Stan"),
@@ -28,8 +26,7 @@ class BinderPresenter(
         Person("17", "Scott Tenorman"),
         Person("18", "Craig")
     )
-    private var modification =
-        Modification.REMOVE
+    private var modification = Modification.REMOVE
 
     fun onNextClick() {
         when (modification) {
@@ -62,8 +59,7 @@ class BinderPresenter(
                     Modification.REMOVE
             }
         }
-        // THIS IS IMPORTANT, NEEDS TO BE DEMONSTRATED
-        view.setPersonList(personList.toList())
+        view.setPersonList(personList)
     }
 
     fun onBackClick() {
@@ -96,7 +92,7 @@ class BinderPresenter(
                 personList[11] = item10
             }
         }
-        view.setPersonList(personList.toList())
+        view.setPersonList(personList)
     }
 
     private enum class Modification {

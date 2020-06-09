@@ -10,7 +10,6 @@ import com.learn.everything.list._05_binder.list.SingleViewTypeAdapter
 import kotlinx.android.synthetic.main.activity_list_binder.*
 import kotlinx.android.synthetic.main.activity_list_binder_person_item.view.*
 
-// 5
 class BinderActivity : AppCompatActivity(), BinderView {
     private val adapter by lazy { PersonAdapter() }
     private val presenter by lazy { BinderPresenter(this) }
