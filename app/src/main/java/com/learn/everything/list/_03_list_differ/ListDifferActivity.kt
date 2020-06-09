@@ -11,18 +11,12 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.learn.everything.R
-import com.learn.everything.list._04_simple_base.SimpleBaseActivity
-import com.learn.everything.list._04_simple_base.SimpleBasePresenter
-import com.learn.everything.list._04_simple_base.SimpleBaseView
-import com.learn.everything.list._04_simple_base.Person
-import com.learn.everything.list._07_listener_fail.list.DefaultDiffUtilItemCallback
 import kotlinx.android.synthetic.main.activity_list_differ.*
-import kotlinx.android.synthetic.main.activity_list_differ_person_item.view.*
+import kotlinx.android.synthetic.main.activity_list_differ_person_item.view.nameTextView
 
-// 3
-class ListDifferActivity : AppCompatActivity(), SimpleBaseView {
+class ListDifferActivity : AppCompatActivity(), ListDifferView {
     private val adapter by lazy { PersonAdapter() }
-    private val presenter by lazy { SimpleBasePresenter(this) }
+    private val presenter by lazy { ListDifferPresenter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +31,7 @@ class ListDifferActivity : AppCompatActivity(), SimpleBaseView {
     }
 
     companion object {
-        fun createIntent(context: Context) = Intent(context, SimpleBaseActivity::class.java)
+        fun createIntent(context: Context) = Intent(context, ListDifferActivity::class.java)
     }
 
     private inner class PersonAdapter : RecyclerView.Adapter<PersonViewHolder>() {
@@ -56,23 +50,28 @@ class ListDifferActivity : AppCompatActivity(), SimpleBaseView {
             holder.bind(listDiffer.currentList[position])
         }
 
-        // OLD
-//        fun setItems(list: List<Person>) {
-//            this.list.clear()
-//            this.list.addAll(list)
-//            notifyDataSetChanged()
-//        }
-
-        // NEW
+        /**
+         * Recreating the list with "toList()" is necessary,
+         * because even if you provide the same instance of a list,
+         * then AsyncListDiffer will not trigger.
+         */
         fun setItems(list: List<Person>) {
-            listDiffer.submitList(list)
+            listDiffer.submitList(list.toList())
         }
     }
 
-    // FIXME: don't use this implementation
     private inner class PersonDiffUtilCallback : DiffUtil.ItemCallback<Person>() {
-        override fun areItemsTheSame(oldItem: Person, newItem: Person) = oldItem == newItem
+        /**
+         * Should provide unique identifier of the item.
+         */
+        override fun areItemsTheSame(oldItem: Person, newItem: Person) = oldItem.id == newItem.id
 
+        /**
+         * Determines whether items should be displayed differently.
+         * Called only if areItemsTheSame == false.
+         *
+         * Usually equals() method or "=="
+         */
         override fun areContentsTheSame(oldItem: Person, newItem: Person) = oldItem == newItem
     }
 
