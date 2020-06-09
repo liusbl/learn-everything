@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.activity_list_differ_fail.*
 import kotlinx.android.synthetic.main.activity_list_differ_fail_person_item.view.*
 import timber.log.Timber
 
-// 2
 class ListDifferFailActivity : AppCompatActivity(), ListDifferFailView {
     private val adapter by lazy { PersonAdapter() }
     private val presenter by lazy { ListDifferFailPresenter(this) }
@@ -52,23 +51,27 @@ class ListDifferFailActivity : AppCompatActivity(), ListDifferFailView {
             holder.bind(listDiffer.currentList[position])
         }
 
-        // OLD
-//        fun setItems(list: List<Person>) {
-//            this.list.clear()
-//            this.list.addAll(list)
-//            notifyDataSetChanged()
-//        }
-
-        // NEW
+        /**
+         * This replaces manual list handling.
+         * However, this example doesn't work. Why?
+         */
         fun setItems(list: List<Person>) {
             listDiffer.submitList(list)
         }
     }
 
-    // FIXME: don't use this implementation
     private inner class PersonDiffUtilCallback : DiffUtil.ItemCallback<Person>() {
-        override fun areItemsTheSame(oldItem: Person, newItem: Person) = oldItem == newItem
+        /**
+         * Should provide unique identifier of the item.
+         */
+        override fun areItemsTheSame(oldItem: Person, newItem: Person) = oldItem.id == newItem.id
 
+        /**
+         * Determines whether items should be displayed differently.
+         * Called only if areItemsTheSame == false.
+         *
+         * Usually equals() method or "=="
+         */
         override fun areContentsTheSame(oldItem: Person, newItem: Person) = oldItem == newItem
     }
 

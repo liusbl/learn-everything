@@ -3,10 +3,8 @@ package com.learn.everything.list._02_list_differ_fail
 class ListDifferFailPresenter(
     private val view: ListDifferFailView
 ) {
-    private val itemToRemove =
-        Person("2", "Kyle")
-    private val itemToMove =
-        Person("4", "Gerald")
+    private val itemToRemove = Person("2", "Kyle")
+    private val itemToMove = Person("4", "Gerald")
     private val personList = mutableListOf(
         Person("0", "Cartman"),
         Person("1", "Stan"),
@@ -28,8 +26,7 @@ class ListDifferFailPresenter(
         Person("17", "Scott Tenorman"),
         Person("18", "Craig")
     )
-    private var modification =
-        Modification.REMOVE
+    private var modification = Modification.REMOVE
 
     fun onNextClick() {
         when (modification) {
@@ -62,7 +59,6 @@ class ListDifferFailPresenter(
                     Modification.REMOVE
             }
         }
-        // THIS IS IMPORTANT, NEEDS TO BE DEMONSTRATED
         view.setPersonList(personList)
     }
 
