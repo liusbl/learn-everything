@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.learn.everything.list._07_listener_fail.list.DefaultDiffUtilItemCallback
 
 abstract class SingleViewTypeAdapter<T>(
     @LayoutRes private val itemLayout: Int

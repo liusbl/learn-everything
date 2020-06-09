@@ -37,16 +37,16 @@
         <activity android:name=".toolbar.SearchToolbarActivity"/>
         <activity android:name=".kodein.LearnKodeinActivity"/>
         <activity android:name=".list.LearnListActivity"/>
-        <activity android:name=".list._02_list_differ_fail.ListDifferFailActivity"/>
-        <activity android:name=".list._04_simple_base.SimpleBaseActivity"/>
         <activity android:name=".list._01_simple.SimpleListActivity"/>
-        <activity android:name=".list._06_layout_container.LayoutContainerActivity"/>
-        <activity android:name=".list._05_binder.BinderActivity"/>
+        <activity android:name=".list._02_list_differ_fail.ListDifferFailActivity"/>
         <activity android:name=".list._03_list_differ.ListDifferActivity"/>
+        <activity android:name=".list._04_simple_base.SimpleBaseActivity"/>
+        <activity android:name=".list._05_binder.BinderActivity"/>
+        <activity android:name=".list._06_layout_container.LayoutContainerActivity"/>
+        <activity android:name=".list._07_listener_fail.ListenerFailActivity"/>
         <activity android:name=".list._08_on_create.OnCreateActivity"/>
         <activity android:name=".list._09_diff_callback.DiffCallbackActivity"/>
         <activity android:name=".list._10_multi_view.MultiViewActivity"/>
-        <activity android:name=".list._11_collapse_expand.CollapseExpandActivity"/>
 
     </application>
 </manifest>

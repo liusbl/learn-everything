@@ -61,8 +61,7 @@ class ListenerFailPresenter(
                     Modification.REMOVE
             }
         }
-        // THIS IS IMPORTANT, NEEDS TO BE DEMONSTRATED
-        view.setPersonList(personList.toList())
+        view.setPersonList(personList)
     }
 
     fun onBackClick() {
@@ -95,7 +94,7 @@ class ListenerFailPresenter(
                 personList[11] = item10
             }
         }
-        view.setPersonList(personList.toList())
+        view.setPersonList(personList)
     }
 
     fun onPersonUpdated(person: Person) {
