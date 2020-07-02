@@ -20,21 +20,22 @@ class LearnActivityResultActivity : AppCompatActivity() {
 
         // Test predefined ActivityResultContract
         pickContactButton.setOnClickListener {
-            val intent = registerForActivityResult(ActivityResultContracts.PickContact()) { result ->
+            val activityResultLauncher = registerForActivityResult(ActivityResultContracts.PickContact()) { result ->
                 Toast.makeText(this, result.toString(), Toast.LENGTH_SHORT).show() // To see normal result, you have to parse it.
             }
-            intent.launch(null)
+            activityResultLauncher.launch(null)
         }
 
-        // Test multiple results
-
         // Test custom Activity
+
 
         // Test from Fragment
 
         // Test custom contract
 
         // Test something with lifecycle
+
+        // Test multiple results
     }
 
     companion object {
