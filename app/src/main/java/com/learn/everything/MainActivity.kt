@@ -2,6 +2,7 @@ package com.learn.everything
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.learn.everything.activity_result.LearnActivityResultActivity
 import com.learn.everything.kodein.LearnKodeinActivity
 import com.learn.everything.list.LearnListActivity
 import com.learn.everything.toolbar.LearnToolbarActivity
@@ -19,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         }
         learnList.setOnClickListener {
             startActivity(LearnListActivity.createIntent(this))
+        }
+        learnActivityResult.setOnClickListener {
+            startActivity(LearnActivityResultActivity.createIntent(this))
         }
     }
 }

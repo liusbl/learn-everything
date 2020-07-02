@@ -48,6 +48,7 @@
         <activity android:name=".list._09_multi_view.MultiViewActivity"/>
         <activity android:name=".list._10_diff_callback.DiffCallbackActivity"/>
         <activity android:name=".list._11_final.FinalActivity"/>
+        <activity android:name=".activity_result.LearnActivityResultActivity"/>
 
     </application>
 </manifest>

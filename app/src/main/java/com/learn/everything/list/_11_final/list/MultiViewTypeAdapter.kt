@@ -29,7 +29,7 @@ abstract class MultiViewTypeAdapter<T : ListItem>(
     }
 
     /**
-     * When using multiple viewTypes, getItemViewType must be overriden.
+     * When using multiple viewTypes, getItemViewType must be implemented.
      * Here we provide the Enum value.
      */
     override fun getItemViewType(position: Int) = currentList[position].viewType.ordinal

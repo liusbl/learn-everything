@@ -31,4 +31,12 @@
         android:layout_margin="8dp"
         android:text="Learn List"/>
 
+    <Button
+        android:id="@+id/learnActivityResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Learn Activity Result"/>
+
 </LinearLayout>
