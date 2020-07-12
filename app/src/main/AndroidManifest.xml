@@ -53,7 +53,7 @@
         <activity android:name=".list._11_final.FinalActivity"/>
         <activity android:name=".activity_result.LearnActivityResultActivity"/>
         <activity
-            android:name=".camerax._01_official_sample.OfficialSample"
+            android:name=".camerax._01_official_sample.OfficialSampleActivity"
             android:clearTaskOnLaunch="true"
             android:rotationAnimation="seamless"
             android:screenOrientation="fullUser"
@@ -67,6 +67,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".camerax.LearnCameraXActivity"/>
-
+        <activity
+            android:name=".camerax._02_basic_usage.BasicUsageActivity"
+            android:clearTaskOnLaunch="true"
+            android:rotationAnimation="seamless"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppTheme">
+            <!-- Register as a system camera app -->
+            <intent-filter>
+                <action android:name="android.media.action.IMAGE_CAPTURE"/>
+                <action android:name="android.media.action.STILL_IMAGE_CAMERA"/>
+                <action android:name="android.media.action.VIDEO_CAMERA"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

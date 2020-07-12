@@ -15,7 +15,7 @@ import java.io.File
  * Main entry point into our app. This app follows the single-activity pattern, and all
  * functionality is implemented in the form of fragments.
  */
-class OfficialSample : AppCompatActivity() {
+class OfficialSampleActivity : AppCompatActivity() {
     private lateinit var container: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,6 +73,6 @@ class OfficialSample : AppCompatActivity() {
                 mediaDir else appContext.filesDir
         }
 
-        fun createIntent(context: Context) = Intent(context, OfficialSample::class.java)
+        fun createIntent(context: Context) = Intent(context, OfficialSampleActivity::class.java)
     }
 }

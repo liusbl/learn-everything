@@ -36,10 +36,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.learn.everything.BuildConfig
 import com.learn.everything.R
-import com.learn.everything.camerax._01_official_sample.OfficialSample.Companion.FLAGS_FULLSCREEN
+import com.learn.everything.camerax._01_official_sample.OfficialSampleActivity.Companion.FLAGS_FULLSCREEN
 import java.util.Locale
-
-val EXTENSION_WHITELIST = arrayOf("JPG")
 
 /** Fragment used to present the user with a gallery of photos taken */
 class GalleryFragment internal constructor() : Fragment() {
@@ -200,5 +198,9 @@ class GalleryFragment internal constructor() : Fragment() {
 
         // Set the dialog to focusable again
         window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+    }
+
+    companion object {
+        val EXTENSION_WHITELIST = arrayOf("JPG")
     }
 }

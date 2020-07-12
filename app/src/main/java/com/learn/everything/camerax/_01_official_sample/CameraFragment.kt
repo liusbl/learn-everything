@@ -52,6 +52,9 @@ import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.learn.everything.R
+import com.learn.everything.camerax._01_official_sample.GalleryFragment.Companion.EXTENSION_WHITELIST
+import com.learn.everything.camerax._01_official_sample.OfficialSampleActivity.Companion.KEY_EVENT_ACTION
+import com.learn.everything.camerax._01_official_sample.OfficialSampleActivity.Companion.KEY_EVENT_EXTRA
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
@@ -212,7 +215,7 @@ class CameraFragment : Fragment() {
         displayManager.registerDisplayListener(displayListener, null)
 
         // Determine the output directory
-        outputDirectory = OfficialSample.getOutputDirectory(requireContext())
+        outputDirectory = OfficialSampleActivity.getOutputDirectory(requireContext())
 
         // Wait for the views to be properly laid out
         viewFinder.post {

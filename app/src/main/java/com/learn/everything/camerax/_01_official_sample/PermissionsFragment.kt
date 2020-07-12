@@ -26,9 +26,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.learn.everything.R
 
-private const val PERMISSIONS_REQUEST_CODE = 10
-private val PERMISSIONS_REQUIRED = arrayOf(Manifest.permission.CAMERA)
-
 /**
  * The sole purpose of this fragment is to request permissions and, once granted, display the
  * camera fragment to the user.
@@ -67,6 +64,8 @@ class PermissionsFragment : Fragment() {
     }
 
     companion object {
+        private const val PERMISSIONS_REQUEST_CODE = 10
+        private val PERMISSIONS_REQUIRED = arrayOf(Manifest.permission.CAMERA)
 
         /** Convenience method used to check if all permissions required by this app are granted */
         fun hasPermissions(context: Context) = PERMISSIONS_REQUIRED.all {
