@@ -49,6 +49,8 @@
         <activity android:name=".list._10_diff_callback.DiffCallbackActivity"/>
         <activity android:name=".list._11_final.FinalActivity"/>
         <activity android:name=".activity_result.LearnActivityResultActivity"/>
+        <activity android:name=".camerax.BasicUsageActivity"/>
+        <activity android:name=".camerax.LearnCameraXActivity"/>
 
     </application>
 </manifest>

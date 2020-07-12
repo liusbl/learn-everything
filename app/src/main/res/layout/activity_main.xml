@@ -39,4 +39,12 @@
         android:layout_margin="8dp"
         android:text="Learn Activity Result"/>
 
+    <Button
+        android:id="@+id/learnCameraX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Learn CameraX"/>
+
 </LinearLayout>
