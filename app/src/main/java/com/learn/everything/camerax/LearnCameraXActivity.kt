@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.learn.everything.R
 import com.learn.everything.camerax._01_official_sample.OfficialSampleActivity
+import com.learn.everything.camerax._02_basic_usage.BasicUsageActivity
 import kotlinx.android.synthetic.main.activity_learn_camera_x.*
 
 class LearnCameraXActivity : AppCompatActivity() {
@@ -14,6 +15,9 @@ class LearnCameraXActivity : AppCompatActivity() {
         setContentView(R.layout.activity_learn_camera_x)
         officialSampleButton.setOnClickListener {
             startActivity(OfficialSampleActivity.createIntent(this))
+        }
+        basicUsageButton.setOnClickListener {
+            startActivity(BasicUsageActivity.createIntent(this))
         }
     }
 
