@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.learn.everything.activity_result.LearnActivityResultActivity
 import com.learn.everything.camerax.LearnCameraXActivity
+import com.learn.everything.fotoapparat.LearnFotoapparatActivity
 import com.learn.everything.kodein.LearnKodeinActivity
 import com.learn.everything.list.LearnListActivity
 import com.learn.everything.toolbar.LearnToolbarActivity
@@ -27,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         }
         learnCameraX.setOnClickListener {
             startActivity(LearnCameraXActivity.createIntent(this))
+        }
+        learnFotoapparat.setOnClickListener {
+            startActivity(LearnFotoapparatActivity.createIntent(this))
         }
     }
 }

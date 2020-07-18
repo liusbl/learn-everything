@@ -81,5 +81,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        <activity android:name=".fotoapparat.LearnFotoapparatActivity"/>
+        <activity android:name=".fotoapparat._01_basic_usage.BasicUsageActivity"/>
     </application>
 </manifest>
