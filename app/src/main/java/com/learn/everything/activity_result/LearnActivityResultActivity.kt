@@ -12,6 +12,10 @@ import kotlinx.android.synthetic.main.activity_learn_activity_result.*
 /** As of 2020-07-02 requires alpha versions of these dependencies:
  * For Activity: androidx.activity:activity:1.2.0-alpha06
  * For Fragment: androidx.fragment:fragment:1.3.0-alpha06
+ *
+ * References:
+ * https://adambennett.dev/2020/03/introducing-the-activity-result-apis/
+ *
  */
 class LearnActivityResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +25,16 @@ class LearnActivityResultActivity : AppCompatActivity() {
         // Test predefined ActivityResultContract
         pickContactButton.setOnClickListener {
             val activityResultLauncher = registerForActivityResult(ActivityResultContracts.PickContact()) { result ->
-                Toast.makeText(this, result.toString(), Toast.LENGTH_SHORT).show() // To see normal result, you have to parse it.
+                Toast.makeText(this, result.toString(), Toast.LENGTH_SHORT).show()
+                // To see proper result, you have to parse it accordingly.
+            }
+            activityResultLauncher.launch(null)
+        }
+
+        // Test Single RequestPermission TODO not working
+        requestLocationPermissionButton.setOnClickListener {
+            val activityResultLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
+                Toast.makeText(this, result.toString(), Toast.LENGTH_SHORT).show()
             }
             activityResultLauncher.launch(null)
         }
@@ -36,6 +49,8 @@ class LearnActivityResultActivity : AppCompatActivity() {
         // Test something with lifecycle
 
         // Test multiple results
+
+        // Test Multiple RequestPermissions
     }
 
     companion object {

@@ -13,4 +13,12 @@
         android:layout_margin="8dp"
         android:text="Pick Contact"/>
 
+    <Button
+        android:id="@+id/requestLocationPermissionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Request Location Permission"/>
+
 </LinearLayout>
