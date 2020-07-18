@@ -41,7 +41,6 @@ class LearnActivityResultActivity : AppCompatActivity() {
 
         // Test custom Activity
 
-
         // Test from Fragment
 
         // Test custom contract
