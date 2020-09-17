@@ -83,5 +83,6 @@
         </activity>
         <activity android:name=".fotoapparat.LearnFotoapparatActivity"/>
         <activity android:name=".fotoapparat._01_basic_usage.BasicUsageActivity"/>
+        <activity android:name=".list._12_duplicate_setting.DuplicateSettingActivity"/>
     </application>
 </manifest>

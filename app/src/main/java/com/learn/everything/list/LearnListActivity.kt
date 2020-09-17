@@ -16,6 +16,7 @@ import com.learn.everything.list._08_on_create.OnCreateActivity
 import com.learn.everything.list._09_multi_view.MultiViewActivity
 import com.learn.everything.list._10_diff_callback.DiffCallbackActivity
 import com.learn.everything.list._11_final.FinalActivity
+import com.learn.everything.list._12_duplicate_setting.DuplicateSettingActivity
 import kotlinx.android.synthetic.main.activity_learn_list.*
 
 class LearnListActivity : AppCompatActivity() {
@@ -54,6 +55,9 @@ class LearnListActivity : AppCompatActivity() {
         }
         finalButton.setOnClickListener {
             startActivity(FinalActivity.createIntent(this))
+        }
+        duplicateSettingButton.setOnClickListener {
+            startActivity(DuplicateSettingActivity.createIntent(this))
         }
     }
 

@@ -55,4 +55,9 @@
         android:layout_margin="8dp"
         android:text="Learn Fotoapparat"/>
 
+    <ImageView
+        android:id="@+id/pimpis"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
 </LinearLayout>
