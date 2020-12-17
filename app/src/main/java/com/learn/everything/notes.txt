@@ -35,6 +35,9 @@ Check material.io, it contains code for material components
 It might not be always easy to find and navigate to a place, so some kind of system (deeplinks maybe, adb commands?),
     which would open the exact screen, would be very useful
 
+There should be an easy way to compare changes between different implementation.
+    For example, you could add a comment or something, that this is an addition, or something.
+
 To check if you learned anything, make a quiz
 
 To find inspiration, check these places (also when implementing add links to them if possible):
@@ -63,6 +66,7 @@ Make a list of all websites that could have relevant information:
     android dev slack
     Android Developer youtube channel
     conferences
+
 
 
 TODO

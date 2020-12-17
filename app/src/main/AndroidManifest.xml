@@ -84,5 +84,18 @@
         <activity android:name=".fotoapparat.LearnFotoapparatActivity"/>
         <activity android:name=".fotoapparat._01_basic_usage.BasicUsageActivity"/>
         <activity android:name=".list._12_duplicate_setting.DuplicateSettingActivity"/>
+        <activity android:name=".navigation.OnboardActivity"/>
+        <activity android:name=".navigation.LearnNavigationActivity"/>
+        <activity
+            android:name=".navigation.CommonLoginActivity"
+            android:theme="@style/AppTheme.Common.Modal"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".navigation.MainActivity"/>
+        <activity
+            android:name=".navigation.LoginCompletionActivity"
+            android:theme="@style/AppTheme.Transparent"/>
+        <activity
+            android:name=".navigation.TransparentActivity"
+            android:theme="@style/AppTheme.Transparent"/>
     </application>
 </manifest>

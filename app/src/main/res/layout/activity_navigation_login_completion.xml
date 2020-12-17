@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="48dp"
+    android:background="#4400FFFF"
+    android:orientation="vertical">
+
+    <!--<Button-->
+    <!--    android:id="@+id/launchMainActivityButtonNonSmooth"-->
+    <!--    android:layout_width="wrap_content"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:layout_gravity="center"-->
+    <!--    android:layout_margin="8dp"-->
+    <!--    android:text="Launch Main Activity Non-Smooth"/>-->
+
+    <Button
+        android:id="@+id/launchMainActivityButtonForResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Launch Main Activity For Result"/>
+
+    <Button
+        android:id="@+id/launchMainActivityButtonAffinityDelay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Launch Main Activity Affinity Delay"/>
+
+    <Button
+        android:id="@+id/closeStackUntilMainButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Close stack until Main"/>
+
+</LinearLayout>

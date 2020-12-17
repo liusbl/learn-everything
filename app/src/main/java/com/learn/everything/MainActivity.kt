@@ -7,6 +7,7 @@ import com.learn.everything.camerax.LearnCameraXActivity
 import com.learn.everything.fotoapparat.LearnFotoapparatActivity
 import com.learn.everything.kodein.LearnKodeinActivity
 import com.learn.everything.list.LearnListActivity
+import com.learn.everything.navigation.LearnNavigationActivity
 import com.learn.everything.toolbar.LearnToolbarActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -31,6 +32,9 @@ class MainActivity : AppCompatActivity() {
         }
         learnFotoapparat.setOnClickListener {
             startActivity(LearnFotoapparatActivity.createIntent(this))
+        }
+        learnNavigation.setOnClickListener {
+            startActivity(LearnNavigationActivity.createIntent(this))
         }
     }
 }

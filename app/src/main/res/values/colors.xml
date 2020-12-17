@@ -6,4 +6,22 @@
     <color name="icActive">#FFFFFFFF</color>
     <color name="icFocused">#DDFFFFFF</color>
     <color name="icPressed">#AAFFFFFF</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="greyLight">#EFEFEF</color>
+    <color name="grey">#B9B9B9</color>
+    <color name="blue">#536877</color>
+    <color name="blueDark">#191E2B</color>
+    <color name="black">#000000</color>
+    <color name="green">#46B82E</color>
+    <color name="greenDark">#008700</color>
+    <color name="yellow">#FFCE00</color>
+    <color name="red">#F04124</color>
+    <color name="connect">#1F6CE3</color>
+
+    <!-- Transparent colors -->
+    <color name="blackTransparent">#33000000</color>
+    <color name="greenTransparent">#3346B82E</color>
+    <color name="blueTransparent">#66536877</color>
+    <color name="blueDarkTransparent">#80191E2B</color>
 </resources>

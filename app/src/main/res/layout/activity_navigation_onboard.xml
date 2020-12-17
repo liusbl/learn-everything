@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:background="#44FFFF00">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content"
+        android:text="Onboard Activity"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
+
+    <Button
+        android:id="@+id/launchCommonLoginActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Launch Common Login Activity"/>
+
+</FrameLayout>
