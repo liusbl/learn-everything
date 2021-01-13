@@ -1,0 +1,7 @@
+Solution for subflow problem:
+use nullable fields
+use lateinit fields
+use inner class which is only created when the data is loaded
+use two combined inner classes in both activity and viewmodel,
+    where the activity can only access the inner class when the data is set up
+create a separate viewModel, which contains the logic
