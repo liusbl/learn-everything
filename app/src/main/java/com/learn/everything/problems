@@ -1,0 +1,3 @@
+Architectural problems:
+ - How to work with equalities that are different than the default "equals" method
+ - Perhaps packaged should be organized by their low-levelness.

@@ -98,7 +98,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/SubflowCardView"
+            android:id="@+id/subFlowCardView"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_gravity="center"
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
                 android:padding="16dp"
-                android:text="Subflow"
+                android:text="Sub-Flow"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
 
         </androidx.cardview.widget.CardView>

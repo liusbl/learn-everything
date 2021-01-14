@@ -6,6 +6,7 @@ import com.learn.everything.activity_result.LearnActivityResultActivity
 import com.learn.everything.fotoapparat.LearnFotoapparatActivity
 import com.learn.everything.list.LearnListActivity
 import com.learn.everything.navigation.LearnNavigationActivity
+import com.learn.everything.sub_flow.LearnSubFlowActivity
 import com.learn.everything.toolbar.LearnToolbarActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -24,6 +25,9 @@ class MainActivity : AppCompatActivity() {
         }
         fotoapparatCardView.setOnClickListener {
             startActivity(LearnFotoapparatActivity.createIntent(this))
+        }
+        subFlowCardView.setOnClickListener {
+            startActivity(LearnSubFlowActivity.createIntent(this))
         }
         navigationCardView.setOnClickListener {
             startActivity(LearnNavigationActivity.createIntent(this))
