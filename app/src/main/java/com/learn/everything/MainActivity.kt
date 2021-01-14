@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         listCardView.setOnClickListener {
             startActivity(LearnListActivity.createIntent(this))
         }
+        jobSchedulerCardView.setOnClickListener {
+            startActivity(LearnListActivity.createIntent(this))
+        }
         activityResultCardView.setOnClickListener {
             startActivity(LearnActivityResultActivity.createIntent(this))
         }
