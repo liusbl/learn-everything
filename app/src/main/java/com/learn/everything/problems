@@ -1,3 +1,15 @@
 Architectural problems:
+ - Business logic problem: how to expose business requirements more clearly,
+    so that it doesn't get mixed with implementation details and
+    the code becomes more self-documenting?
+    It should be clearly visible, where the code is doing business logic
+    and where there are implementation details.
+    For example, if you want to store data, then it's part of business logic.
+    However, HOW (as in, SharedPreferences or whatever) you store data
+    is NOT part of business logic, so it should be clearly separate.
+ - Mutations should be at the end function calls, perhaps?
+     If feel like they should be clearly separated, somehow.
+     Not done throughout the whole file everywhere
  - How to work with equalities that are different than the default "equals" method
  - Perhaps packaged should be organized by their low-levelness.
+
