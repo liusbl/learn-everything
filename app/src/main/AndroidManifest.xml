@@ -98,5 +98,6 @@
             android:name=".navigation.TransparentActivity"
             android:theme="@style/AppTheme.Transparent"/>
         <activity android:name=".sub_flow.LearnSubFlowActivity"/>
+        <activity android:name=".activity_result.ActivityWithResult"/>
     </application>
 </manifest>

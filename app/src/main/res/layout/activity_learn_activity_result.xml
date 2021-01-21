@@ -21,4 +21,12 @@
         android:layout_margin="8dp"
         android:text="Request Location Permission"/>
 
+    <Button
+        android:id="@+id/launchActivityButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Launch Activity"/>
+
 </LinearLayout>
