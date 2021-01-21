@@ -14,6 +14,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        activityResultCardView.setOnClickListener {
+            startActivity(LearnActivityResultActivity.createIntent(this))
+        }
         toolbarCardView.setOnClickListener {
             startActivity(LearnToolbarActivity.createIntent(this))
         }
@@ -22,9 +25,6 @@ class MainActivity : AppCompatActivity() {
         }
         jobSchedulerCardView.setOnClickListener {
             startActivity(LearnListActivity.createIntent(this))
-        }
-        activityResultCardView.setOnClickListener {
-            startActivity(LearnActivityResultActivity.createIntent(this))
         }
         fotoapparatCardView.setOnClickListener {
             startActivity(LearnFotoapparatActivity.createIntent(this))

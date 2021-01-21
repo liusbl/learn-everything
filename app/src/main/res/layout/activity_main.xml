@@ -13,7 +13,7 @@
         tools:context=".MainActivity">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/toolbarCardView"
+            android:id="@+id/activityResultCardView"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_gravity="center"
@@ -22,7 +22,28 @@
             android:layout_marginBottom="8dp"
             android:foreground="?attr/selectableItemBackground"
             card_view:cardCornerRadius="4dp"
-            card_view:cardElevation="12dp">
+            card_view:cardElevation="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:padding="16dp"
+                android:text="Activity Result"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/toolbarCardView"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:foreground="?attr/selectableItemBackground"
+            card_view:cardCornerRadius="4dp"
+            card_view:cardElevation="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,7 +64,7 @@
             android:layout_marginVertical="8dp"
             android:foreground="?attr/selectableItemBackground"
             card_view:cardCornerRadius="4dp"
-            card_view:cardElevation="12dp">
+            card_view:cardElevation="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,7 +85,7 @@
             android:layout_marginVertical="8dp"
             android:foreground="?attr/selectableItemBackground"
             card_view:cardCornerRadius="4dp"
-            card_view:cardElevation="12dp">
+            card_view:cardElevation="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -72,27 +93,6 @@
                 android:layout_gravity="center|start"
                 android:padding="16dp"
                 android:text="List"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/activityResultCardView"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
-            android:foreground="?attr/selectableItemBackground"
-            card_view:cardCornerRadius="4dp"
-            card_view:cardElevation="12dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|start"
-                android:padding="16dp"
-                android:text="Activity Result"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
 
         </androidx.cardview.widget.CardView>
@@ -106,7 +106,7 @@
             android:layout_marginVertical="8dp"
             android:foreground="?attr/selectableItemBackground"
             card_view:cardCornerRadius="4dp"
-            card_view:cardElevation="12dp">
+            card_view:cardElevation="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -127,7 +127,7 @@
             android:layout_marginVertical="8dp"
             android:foreground="?attr/selectableItemBackground"
             card_view:cardCornerRadius="4dp"
-            card_view:cardElevation="12dp">
+            card_view:cardElevation="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -149,7 +149,7 @@
             android:layout_marginBottom="32dp"
             android:foreground="?attr/selectableItemBackground"
             card_view:cardCornerRadius="4dp"
-            card_view:cardElevation="12dp">
+            card_view:cardElevation="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
