@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
 import com.learn.everything.R
 import kotlinx.android.synthetic.main.activity_learn_activity_result.*
 
@@ -31,10 +32,8 @@ import kotlinx.android.synthetic.main.activity_learn_activity_result.*
  *      GOOD: registering contracts in fields or during onCreate
  * - Many use cases are covered by predefined Contracts, so make sure to take a look before making your own.
  *      https://developer.android.com/reference/androidx/activity/result/contract/ActivityResultContracts
- * - ActivityResultLauncher#launch is NOT type safe, so bee careful to pass the correct information
- *      to the #launch method, otherwise it will crash.
- *
- * TODO Show example from our app, how it was refactored.
+ * - Even though ActivityResultLauncher#launch is type safe, it's easy to forget and pass null where you shouldn't,
+ *      which will crash the app, so make sure you check the types carefully.
  */
 class LearnActivityResultActivity : AppCompatActivity() {
     private val activityLauncher = registerForActivityResult(StartActivityForResult()) { result ->
@@ -100,9 +99,11 @@ class LearnActivityResultActivity : AppCompatActivity() {
             customContractLauncher.launch(RingtoneManager.TYPE_RINGTONE)
         }
 
-        // Test from Fragment
+        // Contract from Fragment
         launchFragmentButton.setOnClickListener {
-
+            supportFragmentManager.commit {
+                replace(R.id.fragmentContainer, CreateDocumentFragment.newInstance())
+            }
         }
     }
 
