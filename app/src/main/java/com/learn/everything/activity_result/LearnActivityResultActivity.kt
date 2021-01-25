@@ -3,6 +3,7 @@ package com.learn.everything.activity_result
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.media.RingtoneManager
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.*
@@ -15,19 +16,33 @@ import kotlinx.android.synthetic.main.activity_learn_activity_result.*
  * For Fragment: androidx.fragment:fragment:1.3.0-rc01
  *
  * References:
- * https://developer.android.com/training/basics/intents/result
- * https://adambennett.dev/2020/03/introducing-the-activity-result-apis/
- * https://medium.com/@ajinkya.kolkhede1/requesting-runtime-permissions-using-new-activityresult-api-cb6116551f00
+ *  - Full documentation:
+ *      - https://developer.android.com/training/basics/intents/result
+ *  - List of predefined Contracts:
+ *      - https://developer.android.com/reference/androidx/activity/result/contract/ActivityResultContracts
+ *  - Articles:
+ *      - https://medium.com/@ajinkya.kolkhede1/requesting-runtime-permissions-using-new-activityresult-api-cb6116551f00
+ *      - https://adambennett.dev/2020/03/introducing-the-activity-result-apis/
  *
- * BAD: registering contracts in user callbacks, like in setOnClickListener
- * GOOD: registering contracts in fields or during onCreate
+ * Things to keep in mind:
+ * - When to register contracts?
+ *      BAD: registering contracts in user callbacks, like in setOnClickListener.
+ *          Don't do this, because it can crash the app immediately or when recreating.
+ *      GOOD: registering contracts in fields or during onCreate
+ * - Many use cases are covered by predefined Contracts, so make sure to take a look before making your own.
+ *      https://developer.android.com/reference/androidx/activity/result/contract/ActivityResultContracts
+ * - ActivityResultLauncher#launch is NOT type safe, so bee careful to pass the correct information
+ *      to the #launch method, otherwise it will crash.
  *
  * TODO Show example from our app, how it was refactored.
  */
 class LearnActivityResultActivity : AppCompatActivity() {
-    private val pickContactLauncher = registerForActivityResult(PickContact()) { result ->
-        Toast.makeText(this, result.toString(), Toast.LENGTH_SHORT).show()
-        // To see proper result, you have to parse it accordingly.
+    private val activityLauncher = registerForActivityResult(StartActivityForResult()) { result ->
+        if (result.resultCode == ACTIVITY_RESULT_CODE) {
+            val intent = result.data
+            val text = intent?.getStringExtra(EXTRA_RESULT_DATA)
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private val singlePermissionLauncher = registerForActivityResult(RequestPermission()) { isGranted ->
@@ -41,30 +56,23 @@ class LearnActivityResultActivity : AppCompatActivity() {
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
     }
 
-    private val activityLauncher = registerForActivityResult(StartActivityForResult()) { result ->
-        if (result.resultCode == ACTIVITY_RESULT_CODE) {
-            val intent = result.data
-            val text = intent?.getStringExtra(EXTRA_RESULT_DATA)
-            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
-        }
+    private val predefinedContract = registerForActivityResult(PickContact()) { uri ->
+        Toast.makeText(this, uri?.toString(), Toast.LENGTH_SHORT).show()
+        // To see proper result, you have to parse it accordingly.
     }
 
-    // registerForActivityResult MUST be called in onCreate OR in a field!
-    //  It must not be called in setOnClickListener
+    private val customContractLauncher = registerForActivityResult(PickRingtone()) { uri ->
+        Toast.makeText(this, uri.toString(), Toast.LENGTH_SHORT).show()
+        // To see proper result, you have to parse it accordingly.
+    }
 
-    // Also important, don't dismiss the provided Contracts.
-    // Provide example from our latest PR
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learn_activity_result)
 
-        // TODO write a short description about this, link to documentation, etc.
-
-        // TODO use dynamic list for things.
-
-        // Predefined contract
-        pickContactButton.setOnClickListener {
-            pickContactLauncher.launch(null)
+        // Activity with result
+        launchActivityButton.setOnClickListener {
+            activityLauncher.launch(ActivityWithResult.createIntent(this))
         }
 
         // Single permission
@@ -82,25 +90,20 @@ class LearnActivityResultActivity : AppCompatActivity() {
             )
         }
 
-        // Test Activity
-        launchActivityButton.setOnClickListener {
-            activityLauncher.launch(ActivityWithResult.createIntent(this@LearnActivityResultActivity))
+        // Predefined contract
+        launchPredefinedContractButton.setOnClickListener {
+            predefinedContract.launch(null)
+        }
+
+        // Custom contract
+        launchCustomContractButton.setOnClickListener {
+            customContractLauncher.launch(RingtoneManager.TYPE_RINGTONE)
         }
 
         // Test from Fragment
-        run {
+        launchFragmentButton.setOnClickListener {
 
         }
-
-        // Test custom contract https://developer.android.com/training/basics/intents/result#custom
-
-        // Test something with lifecycle
-
-        // Test multiple results
-
-        // Test Multiple RequestPermissions
-
-        //
     }
 
     companion object {

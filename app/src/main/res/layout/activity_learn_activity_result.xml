@@ -6,13 +6,12 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/pickContactButton"
+        android:id="@+id/launchActivityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
-        android:text="Pick Contact"/>
-
+        android:text="Launch Activity With Result"/>
     <Button
         android:id="@+id/requestSinglePermissionButton"
         android:layout_width="wrap_content"
@@ -30,11 +29,27 @@
         android:text="Request Multiple Permissions"/>
 
     <Button
-        android:id="@+id/launchActivityButton"
+        android:id="@+id/launchPredefinedContractButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
-        android:text="Launch Activity"/>
+        android:text="Launch Predefined Contract"/>
+
+    <Button
+        android:id="@+id/launchCustomContractButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Launch Custom Contract"/>
+
+    <Button
+        android:id="@+id/launchFragmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Launch Fragment With Result"/>
 
 </LinearLayout>
