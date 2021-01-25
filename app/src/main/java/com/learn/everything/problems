@@ -12,4 +12,16 @@ Architectural problems:
      Not done throughout the whole file everywhere
  - How to work with equalities that are different than the default "equals" method
  - Perhaps packaged should be organized by their low-levelness.
-
+ - Should should almost never override equals method.
+    It's very dangerous, can break in unexpected ways.
+ - I feel like mapping to specific scope objects
+    is essential for reducing complexity and big data classes
+ - Testing:
+    - Should mocked testing data be similar to actual data that is received?
+        I think it should, because then it's easier to understand what's going on.
+    - How to mock large data classes, which needs slight adjustments each time?
+        - You could create a default object and only provide the differences that are needed.
+        However, my thinking is this.
+        If you are mocking a large data class and you are not even testing 90% of the fields,
+        perhaps you shouldn't be using that data class at all? Perhaps you should map that data class
+        to a similar data classs that contains only the fields that are necessary for that class.

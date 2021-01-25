@@ -20,8 +20,20 @@ import kotlinx.android.synthetic.main.activity_learn_activity_result.*
  */
 class LearnActivityResultActivity : AppCompatActivity() {
 
-    // registerForActivityResult MUST be called in onCreate.
+    val contract = ActivityResultContracts.StartActivityForResult()
+    val launcher = registerForActivityResult(contract) { result: ActivityResult ->
+        if (result.resultCode == ACTIVITY_RESULT_CODE) {
+            val intent = result.data
+            val text = intent?.getStringExtra(EXTRA_RESULT_DATA)
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // registerForActivityResult MUST be called in onCreate OR in a field!
     //  It must not be called in setOnClickListener
+
+    // Also important, don't dismiss the provided Contracts.
+    // Provide example from our latest PR
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learn_activity_result)
@@ -55,20 +67,16 @@ class LearnActivityResultActivity : AppCompatActivity() {
 
         // Test Activity
         run {
-            val contract = ActivityResultContracts.StartActivityForResult()
-            val launcher = registerForActivityResult(contract) { result: ActivityResult ->
-                if (result.resultCode == ACTIVITY_RESULT_CODE) {
-                    val intent = result.data
-                    val text = intent?.getStringExtra(EXTRA_RESULT_DATA)
-                    Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
-                }
-            }
+
             launchActivityButton.setOnClickListener {
                 launcher.launch(ActivityWithResult.createIntent(this@LearnActivityResultActivity))
             }
         }
 
         // Test from Fragment
+        run {
+
+        }
 
         // Test custom contract https://developer.android.com/training/basics/intents/result#custom
 
