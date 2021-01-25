@@ -14,12 +14,20 @@
         android:text="Pick Contact"/>
 
     <Button
-        android:id="@+id/requestLocationPermissionButton"
+        android:id="@+id/requestSinglePermissionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
-        android:text="Request Location Permission"/>
+        android:text="Request Single Permission"/>
+
+    <Button
+        android:id="@+id/requestMultiplePermissionsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Request Multiple Permissions"/>
 
     <Button
         android:id="@+id/launchActivityButton"
