@@ -14,26 +14,28 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        activityResultCardView.setOnClickListener {
-            startActivity(LearnActivityResultActivity.createIntent(this))
-        }
-        toolbarCardView.setOnClickListener {
-            startActivity(LearnToolbarActivity.createIntent(this))
-        }
-        listCardView.setOnClickListener {
-            startActivity(LearnListActivity.createIntent(this))
-        }
-        jobSchedulerCardView.setOnClickListener {
-            startActivity(LearnListActivity.createIntent(this))
-        }
-        fotoapparatCardView.setOnClickListener {
-            startActivity(LearnFotoapparatActivity.createIntent(this))
-        }
-        subFlowCardView.setOnClickListener {
-            startActivity(LearnSubFlowActivity.createIntent(this))
-        }
-        navigationCardView.setOnClickListener {
-            startActivity(LearnNavigationActivity.createIntent(this))
-        }
+        startActivity(LearnActivityResultActivity.createIntent(this))
+
+//        activityResultCardView.setOnClickListener {
+//            startActivity(LearnActivityResultActivity.createIntent(this))
+//        }
+//        toolbarCardView.setOnClickListener {
+//            startActivity(LearnToolbarActivity.createIntent(this))
+//        }
+//        listCardView.setOnClickListener {
+//            startActivity(LearnListActivity.createIntent(this))
+//        }
+//        jobSchedulerCardView.setOnClickListener {
+//            startActivity(LearnListActivity.createIntent(this))
+//        }
+//        fotoapparatCardView.setOnClickListener {
+//            startActivity(LearnFotoapparatActivity.createIntent(this))
+//        }
+//        subFlowCardView.setOnClickListener {
+//            startActivity(LearnSubFlowActivity.createIntent(this))
+//        }
+//        navigationCardView.setOnClickListener {
+//            startActivity(LearnNavigationActivity.createIntent(this))
+//        }
     }
 }

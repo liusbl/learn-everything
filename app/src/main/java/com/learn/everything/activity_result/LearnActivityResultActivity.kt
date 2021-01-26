@@ -70,17 +70,17 @@ class LearnActivityResultActivity : AppCompatActivity() {
         setContentView(R.layout.activity_learn_activity_result)
 
         // Activity with result
-        launchActivityButton.setOnClickListener {
+        launchActivityCardView.setOnClickListener {
             activityLauncher.launch(ActivityWithResult.createIntent(this))
         }
 
         // Single permission
-        requestSinglePermissionButton.setOnClickListener {
+        requestSinglePermissionCardView.setOnClickListener {
             singlePermissionLauncher.launch(Manifest.permission.CALL_PHONE)
         }
 
         // Multiple permissions
-        requestMultiplePermissionsButton.setOnClickListener {
+        requestMultiplePermissionsCardView.setOnClickListener {
             multiplePermissionLauncher.launch(
                 arrayOf(
                     Manifest.permission.READ_CONTACTS,
@@ -90,17 +90,17 @@ class LearnActivityResultActivity : AppCompatActivity() {
         }
 
         // Predefined contract
-        launchPredefinedContractButton.setOnClickListener {
+        launchPredefinedContractCardView.setOnClickListener {
             predefinedContract.launch(null)
         }
 
         // Custom contract
-        launchCustomContractButton.setOnClickListener {
+        launchCustomContractCardView.setOnClickListener {
             customContractLauncher.launch(RingtoneManager.TYPE_RINGTONE)
         }
 
         // Contract from Fragment
-        launchFragmentButton.setOnClickListener {
+        launchFragmentCardView.setOnClickListener {
             supportFragmentManager.commit {
                 replace(R.id.fragmentContainer, CreateDocumentFragment.newInstance())
             }
