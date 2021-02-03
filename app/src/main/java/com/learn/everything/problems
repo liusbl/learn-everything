@@ -25,3 +25,15 @@ Architectural problems:
         If you are mocking a large data class and you are not even testing 90% of the fields,
         perhaps you shouldn't be using that data class at all? Perhaps you should map that data class
         to a similar data classs that contains only the fields that are necessary for that class.
+ - For new architecture:
+   - Propose a structure for things.
+   - Provide reasons for showscase app.
+   - Think about how it could combine with
+   - Differentiate between different types of "documentation"
+    - Random snippets (gists?)
+    - Utility functions
+    - Bigger structures
+    - TODO define properly
+    - How does notion fit there
+    - Estimate the effort that it would take.
+    - Consider how it could be useful for everyone.

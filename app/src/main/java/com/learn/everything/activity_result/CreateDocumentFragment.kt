@@ -16,6 +16,7 @@ class CreateDocumentFragment : Fragment(R.layout.fragment_create_document) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        targetFragment
         predefinedContractButton.setOnClickListener {
             predefinedContract.launch("name.txt")
         }
