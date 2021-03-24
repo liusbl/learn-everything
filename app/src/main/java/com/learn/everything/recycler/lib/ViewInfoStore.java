@@ -15,20 +15,14 @@
  */
 package com.learn.everything.recycler.lib;
 
-import static androidx.recyclerview.widget.ViewInfoStore.InfoRecord.FLAG_APPEAR;
-import static androidx.recyclerview.widget.ViewInfoStore.InfoRecord.FLAG_APPEAR_AND_DISAPPEAR;
-import static androidx.recyclerview.widget.ViewInfoStore.InfoRecord.FLAG_APPEAR_PRE_AND_POST;
-import static androidx.recyclerview.widget.ViewInfoStore.InfoRecord.FLAG_DISAPPEARED;
-import static androidx.recyclerview.widget.ViewInfoStore.InfoRecord.FLAG_POST;
-import static androidx.recyclerview.widget.ViewInfoStore.InfoRecord.FLAG_PRE;
-import static androidx.recyclerview.widget.ViewInfoStore.InfoRecord.FLAG_PRE_AND_POST;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.collection.LongSparseArray;
 import androidx.collection.SimpleArrayMap;
 import androidx.core.util.Pools;
+
+import static com.learn.everything.recycler.lib.ViewInfoStore.InfoRecord.*;
 
 /**
  * This class abstracts all tracking for Views to run animations.
@@ -63,7 +57,7 @@ class ViewInfoStore {
     void addToPreLayout(RecyclerView.ViewHolder holder, RecyclerView.ItemAnimator.ItemHolderInfo info) {
         InfoRecord record = mLayoutHolderMap.get(holder);
         if (record == null) {
-            record = InfoRecord.obtain();
+            record = obtain();
             mLayoutHolderMap.put(holder, record);
         }
         record.preInfo = info;
@@ -106,7 +100,7 @@ class ViewInfoStore {
         if (record != null && (record.flags & flag) != 0) {
             record.flags &= ~flag;
             final RecyclerView.ItemAnimator.ItemHolderInfo info;
-            if (flag == FLAG_PRE) {
+            if (flag ==  FLAG_PRE) {
                 info = record.preInfo;
             } else if (flag == FLAG_POST) {
                 info = record.postInfo;
@@ -116,7 +110,7 @@ class ViewInfoStore {
             // if not pre-post flag is left, clear.
             if ((record.flags & (FLAG_PRE | FLAG_POST)) == 0) {
                 mLayoutHolderMap.removeAt(index);
-                InfoRecord.recycle(record);
+                recycle(record);
             }
             return info;
         }
@@ -144,7 +138,7 @@ class ViewInfoStore {
     void addToAppearedInPreLayoutHolders(RecyclerView.ViewHolder holder, RecyclerView.ItemAnimator.ItemHolderInfo info) {
         InfoRecord record = mLayoutHolderMap.get(holder);
         if (record == null) {
-            record = InfoRecord.obtain();
+            record = obtain();
             mLayoutHolderMap.put(holder, record);
         }
         record.flags |= FLAG_APPEAR;
@@ -181,7 +175,7 @@ class ViewInfoStore {
     void addToPostLayout(RecyclerView.ViewHolder holder, RecyclerView.ItemAnimator.ItemHolderInfo info) {
         InfoRecord record = mLayoutHolderMap.get(holder);
         if (record == null) {
-            record = InfoRecord.obtain();
+            record = obtain();
             mLayoutHolderMap.put(holder, record);
         }
         record.postInfo = info;
@@ -197,7 +191,7 @@ class ViewInfoStore {
     void addToDisappearedInLayout(RecyclerView.ViewHolder holder) {
         InfoRecord record = mLayoutHolderMap.get(holder);
         if (record == null) {
-            record = InfoRecord.obtain();
+            record = obtain();
             mLayoutHolderMap.put(holder, record);
         }
         record.flags |= FLAG_DISAPPEARED;
@@ -248,7 +242,7 @@ class ViewInfoStore {
             } else if (DEBUG) {
                 throw new IllegalStateException("record without any reasonable flag combination:/");
             }
-            InfoRecord.recycle(record);
+            recycle(record);
         }
     }
 
@@ -265,12 +259,12 @@ class ViewInfoStore {
         }
         final InfoRecord info = mLayoutHolderMap.remove(holder);
         if (info != null) {
-            InfoRecord.recycle(info);
+            recycle(info);
         }
     }
 
     void onDetach() {
-        InfoRecord.drainCache();
+        drainCache();
     }
 
     public void onViewDetached(RecyclerView.ViewHolder viewHolder) {

@@ -100,8 +100,7 @@ public class DiffUtil {
      * @return A DiffResult that contains the information about the edit sequence to convert the
      * old list into the new list.
      */
-    @NonNull
-    public static DiffResult calculateDiff(@NonNull Callback cb) {
+        public static DiffResult calculateDiff(Callback cb) {
         return calculateDiff(cb, true);
     }
 
@@ -118,8 +117,7 @@ public class DiffUtil {
      * @return A DiffResult that contains the information about the edit sequence to convert the
      * old list into the new list.
      */
-    @NonNull
-    public static DiffResult calculateDiff(@NonNull Callback cb, boolean detectMoves) {
+        public static DiffResult calculateDiff(Callback cb, boolean detectMoves) {
         final int oldSize = cb.getOldListSize();
         final int newSize = cb.getNewListSize();
 
@@ -386,7 +384,7 @@ public class DiffUtil {
          *
          * @see Callback#areItemsTheSame(int, int)
          */
-        public abstract boolean areItemsTheSame(@NonNull T oldItem, @NonNull T newItem);
+        public abstract boolean areItemsTheSame(T oldItem, T newItem);
 
         /**
          * Called to check whether two items have the same data.
@@ -412,7 +410,7 @@ public class DiffUtil {
          *
          * @see Callback#areContentsTheSame(int, int)
          */
-        public abstract boolean areContentsTheSame(@NonNull T oldItem, @NonNull T newItem);
+        public abstract boolean areContentsTheSame(T oldItem, T newItem);
 
         /**
          * When {@link #areItemsTheSame(T, T)} returns {@code true} for two items and
@@ -430,7 +428,7 @@ public class DiffUtil {
          */
         @SuppressWarnings({"WeakerAccess", "unused"})
         @Nullable
-        public Object getChangePayload(@NonNull T oldItem, @NonNull T newItem) {
+        public Object getChangePayload(T oldItem, T newItem) {
             return null;
         }
     }
@@ -798,7 +796,7 @@ public class DiffUtil {
          *                displaying the new list.
          * @see AdapterListUpdateCallback
          */
-        public void dispatchUpdatesTo(@NonNull final RecyclerView.Adapter adapter) {
+        public void dispatchUpdatesTo(final RecyclerView.Adapter adapter) {
             dispatchUpdatesTo(new AdapterListUpdateCallback(adapter));
         }
 
@@ -811,7 +809,7 @@ public class DiffUtil {
          * @param updateCallback The callback to receive the update operations.
          * @see #dispatchUpdatesTo(RecyclerView.Adapter)
          */
-        public void dispatchUpdatesTo(@NonNull ListUpdateCallback updateCallback) {
+        public void dispatchUpdatesTo(ListUpdateCallback updateCallback) {
             final BatchingListUpdateCallback batchingCallback;
             if (updateCallback instanceof BatchingListUpdateCallback) {
                 batchingCallback = (BatchingListUpdateCallback) updateCallback;

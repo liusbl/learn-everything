@@ -21,6 +21,7 @@ import static androidx.annotation.RestrictTo.Scope.LIBRARY;
 import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX;
 import static androidx.core.view.ViewCompat.TYPE_NON_TOUCH;
 import static androidx.core.view.ViewCompat.TYPE_TOUCH;
+import static com.learn.everything.recycler.lib.RecyclerView.ItemAnimator.*;
 
 import android.animation.LayoutTransition;
 import android.annotation.SuppressLint;
@@ -82,7 +83,6 @@ import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import androidx.core.widget.EdgeEffectCompat;
 import androidx.customview.view.AbsSavedState;
 import androidx.recyclerview.R;
-import androidx.recyclerview.widget.RecyclerView.ItemAnimator.ItemHolderInfo;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -560,7 +560,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
     // For use in item animations
     boolean mItemsAddedOrRemoved = false;
     boolean mItemsChanged = false;
-    private ItemAnimator.ItemAnimatorListener mItemAnimatorListener =
+    private ItemAnimatorListener mItemAnimatorListener =
             new ItemAnimatorRestoreListener();
     boolean mPostedAnimatorRunner = false;
     RecyclerViewAccessibilityDelegate mAccessibilityDelegate;
@@ -4054,7 +4054,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
                 }
                 final ItemHolderInfo animationInfo = mItemAnimator
                         .recordPreLayoutInformation(mState, holder,
-                                ItemAnimator.buildAdapterChangeFlagsForAnimations(holder),
+                                buildAdapterChangeFlagsForAnimations(holder),
                                 holder.getUnmodifiedPayloads());
                 mViewInfoStore.addToPreLayout(holder, animationInfo);
                 if (mState.mTrackOldChangeHolders && holder.isUpdated() && !holder.isRemoved()
@@ -4092,11 +4092,11 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
                     continue;
                 }
                 if (!mViewInfoStore.isInPreLayout(viewHolder)) {
-                    int flags = ItemAnimator.buildAdapterChangeFlagsForAnimations(viewHolder);
+                    int flags = buildAdapterChangeFlagsForAnimations(viewHolder);
                     boolean wasHidden = viewHolder
                             .hasAnyOfTheFlags(ViewHolder.FLAG_BOUNCED_FROM_HIDDEN_LIST);
                     if (!wasHidden) {
-                        flags |= ItemAnimator.FLAG_APPEARED_IN_PRE_LAYOUT;
+                        flags |= FLAG_APPEARED_IN_PRE_LAYOUT;
                     }
                     final ItemHolderInfo animationInfo = mItemAnimator.recordPreLayoutInformation(
                             mState, viewHolder, flags, viewHolder.getUnmodifiedPayloads());
@@ -4528,7 +4528,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
      * Returns true if RecyclerView is currently running some animations.
      * <p>
      * If you want to be notified when animations are finished, use
-     * {@link ItemAnimator#isRunning(ItemAnimator.ItemAnimatorFinishedListener)}.
+     * {@link ItemAnimator#isRunning(ItemAnimatorFinishedListener)}.
      *
      * @return True if there are some item animations currently running or waiting to be started.
      */
@@ -6256,9 +6256,8 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
                     .hasAnyOfTheFlags(ViewHolder.FLAG_BOUNCED_FROM_HIDDEN_LIST)) {
                 holder.setFlags(0, ViewHolder.FLAG_BOUNCED_FROM_HIDDEN_LIST);
                 if (mState.mRunSimpleAnimations) {
-                    int changeFlags = ItemAnimator
-                            .buildAdapterChangeFlagsForAnimations(holder);
-                    changeFlags |= ItemAnimator.FLAG_APPEARED_IN_PRE_LAYOUT;
+                    int changeFlags = buildAdapterChangeFlagsForAnimations(holder);
+                    changeFlags |= FLAG_APPEARED_IN_PRE_LAYOUT;
                     final ItemHolderInfo info = mItemAnimator.recordPreLayoutInformation(mState,
                             holder, changeFlags, holder.getUnmodifiedPayloads());
                     recordAnimationInfoIfBouncedHiddenView(holder, info);
@@ -12681,7 +12680,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
      * It depends on the contract with the ItemAnimator to call the appropriate dispatch*Finished()
      * method on the animator's listener when it is done animating any item.
      */
-    private class ItemAnimatorRestoreListener implements ItemAnimator.ItemAnimatorListener {
+    private class ItemAnimatorRestoreListener implements ItemAnimatorListener {
 
         ItemAnimatorRestoreListener() {
         }
@@ -12775,12 +12774,6 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
          * The set of flags that might be passed to
          * {@link #recordPreLayoutInformation(State, ViewHolder, int, List)}.
          */
-        @IntDef(flag = true, value = {
-                FLAG_CHANGED, FLAG_REMOVED, FLAG_MOVED, FLAG_INVALIDATED,
-                FLAG_APPEARED_IN_PRE_LAYOUT
-        })
-        @Retention(RetentionPolicy.SOURCE)
-        public @interface AdapterChanges {}
         private ItemAnimatorListener mListener = null;
         private ArrayList<ItemAnimatorFinishedListener> mFinishedListeners =
                 new ArrayList<ItemAnimatorFinishedListener>();
@@ -12908,7 +12901,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
          * @see #animatePersistence(ViewHolder, ItemHolderInfo, ItemHolderInfo)
          */
         public @NonNull ItemHolderInfo recordPreLayoutInformation(@NonNull State state,
-                @NonNull ViewHolder viewHolder, @AdapterChanges int changeFlags,
+                @NonNull ViewHolder viewHolder, int changeFlags,
                 @NonNull List<Object> payloads) {
             return obtainHolderInfo().setFrom(viewHolder);
         }
@@ -13109,7 +13102,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
                 @NonNull ViewHolder newHolder,
                 @NonNull ItemHolderInfo preLayoutInfo, @NonNull ItemHolderInfo postLayoutInfo);
 
-        @AdapterChanges static int buildAdapterChangeFlagsForAnimations(ViewHolder viewHolder) {
+        static int buildAdapterChangeFlagsForAnimations(ViewHolder viewHolder) {
             int flags = viewHolder.mFlags & (FLAG_INVALIDATED | FLAG_REMOVED | FLAG_CHANGED);
             if (viewHolder.isInvalid()) {
                 return FLAG_INVALIDATED;
@@ -13419,8 +13412,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
              * The change flags that were passed to
              * {@link #recordPreLayoutInformation(RecyclerView.State, ViewHolder, int, List)}.
              */
-            @AdapterChanges
-            public int changeFlags;
+                        public int changeFlags;
 
             public ItemHolderInfo() {
             }
@@ -13449,7 +13441,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
              */
             @NonNull
             public ItemHolderInfo setFrom(@NonNull RecyclerView.ViewHolder holder,
-                    @AdapterChanges int flags) {
+                    int flags) {
                 final View view = holder.itemView;
                 this.left = view.getLeft();
                 this.top = view.getTop();

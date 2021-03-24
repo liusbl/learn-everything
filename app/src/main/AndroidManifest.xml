@@ -102,5 +102,6 @@
             android:theme="@style/AppTheme.Transparent"/>
         <activity android:name=".sub_flow.LearnSubFlowActivity"/>
         <activity android:name=".activity_result.ActivityWithResult"/>
+        <activity android:name=".recycler.RecyclerTestActivity"/>
     </application>
 </manifest>

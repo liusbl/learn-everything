@@ -2,19 +2,13 @@ package com.learn.everything
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.learn.everything.activity_result.LearnActivityResultActivity
-import com.learn.everything.fotoapparat.LearnFotoapparatActivity
-import com.learn.everything.list.LearnListActivity
-import com.learn.everything.navigation.LearnNavigationActivity
-import com.learn.everything.sub_flow.LearnSubFlowActivity
-import com.learn.everything.toolbar.LearnToolbarActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.learn.everything.recycler.RecyclerTestActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        startActivity(LearnActivityResultActivity.createIntent(this))
+        startActivity(RecyclerTestActivity.createIntent(this))
 
 //        activityResultCardView.setOnClickListener {
 //            startActivity(LearnActivityResultActivity.createIntent(this))
