@@ -22,7 +22,7 @@ class RecyclerTestActivity : AppCompatActivity() {
     }
 
     class Adapter : RecyclerView.Adapter<Holder>() {
-        val list = listOf<String>(
+        val list = listOf(
             "Never",
             "Gonna",
             "Give",
