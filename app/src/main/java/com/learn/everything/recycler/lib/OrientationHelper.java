@@ -191,14 +191,6 @@ public abstract class OrientationHelper {
     public abstract int getTotalSpace();
 
     /**
-     * Offsets the child in this orientation.
-     *
-     * @param view   View to offset
-     * @param offset offset amount
-     */
-    public abstract void offsetChild(View view, int offset);
-
-    /**
      * Returns the padding at the end of the layout. For horizontal helper, this is the right
      * padding and for vertical helper, this is the bottom padding. This method does not check
      * whether the layout is RTL or not.
@@ -217,17 +209,6 @@ public abstract class OrientationHelper {
      * @see RecyclerView.LayoutManager#getHeightMode()
      */
     public abstract int getMode();
-
-    /**
-     * Returns the MeasureSpec mode for the perpendicular orientation from the LayoutManager.
-     *
-     * @return The current measure spec mode.
-     *
-     * @see View.MeasureSpec
-     * @see RecyclerView.LayoutManager#getWidthMode()
-     * @see RecyclerView.LayoutManager#getHeightMode()
-     */
-    public abstract int getModeInOther();
 
     /**
      * Creates an OrientationHelper for the given LayoutManager and orientation.
@@ -325,11 +306,6 @@ public abstract class OrientationHelper {
             }
 
             @Override
-            public void offsetChild(View view, int offset) {
-                view.offsetLeftAndRight(offset);
-            }
-
-            @Override
             public int getEndPadding() {
                 return mLayoutManager.getPaddingRight();
             }
@@ -337,11 +313,6 @@ public abstract class OrientationHelper {
             @Override
             public int getMode() {
                 return mLayoutManager.getWidthMode();
-            }
-
-            @Override
-            public int getModeInOther() {
-                return mLayoutManager.getHeightMode();
             }
         };
     }
@@ -423,11 +394,6 @@ public abstract class OrientationHelper {
             }
 
             @Override
-            public void offsetChild(View view, int offset) {
-                view.offsetTopAndBottom(offset);
-            }
-
-            @Override
             public int getEndPadding() {
                 return mLayoutManager.getPaddingBottom();
             }
@@ -435,11 +401,6 @@ public abstract class OrientationHelper {
             @Override
             public int getMode() {
                 return mLayoutManager.getHeightMode();
-            }
-
-            @Override
-            public int getModeInOther() {
-                return mLayoutManager.getWidthMode();
             }
         };
     }

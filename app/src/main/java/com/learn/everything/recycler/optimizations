@@ -1,0 +1,35 @@
+setRecycledViewPool
+
+setHasFixedSize
+
+setViewCacheExtension
+
+setItemViewCacheSize
+
+setPreserveFocusAfterLayout
+
+Adapter#setHasStableIds
+
+RecyclerViewPool#setMaxRecycledViews
+
+Recycler#setViewCacheSize
+
+Adapter: usage of payloads
+
+LinearLayoutManager optimizations?
+
+setAutoMeasureEnabled
+
+supportsPredictiveItemAnimations
+
+setItemPrefetchEnabled
+
+setMeasurementCacheEnabled
+
+setInitialPrefetchItemCount
+
+shouldMeasureTwice?
+
+
+----
+Search for articles

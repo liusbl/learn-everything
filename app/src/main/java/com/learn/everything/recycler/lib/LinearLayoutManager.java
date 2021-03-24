@@ -36,6 +36,8 @@ import androidx.core.view.ViewCompat;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * A {@link RecyclerView.LayoutManager} implementation which provides
  * similar functionality to {@link android.widget.ListView}.
@@ -201,34 +203,6 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
                 ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 
-    /**
-     * Returns whether LayoutManager will recycle its children when it is detached from
-     * RecyclerView.
-     *
-     * @return true if LayoutManager will recycle its children when it is detached from
-     * RecyclerView.
-     */
-    public boolean getRecycleChildrenOnDetach() {
-        return mRecycleChildrenOnDetach;
-    }
-
-    /**
-     * Set whether LayoutManager will recycle its children when it is detached from
-     * RecyclerView.
-     * <p>
-     * If you are using a {@link RecyclerView.RecycledViewPool}, it might be a good idea to set
-     * this flag to <code>true</code> so that views will be available to other RecyclerViews
-     * immediately.
-     * <p>
-     * Note that, setting this flag will result in a performance drop if RecyclerView
-     * is restored.
-     *
-     * @param recycleChildrenOnDetach Whether children should be recycled in detach or not.
-     */
-    public void setRecycleChildrenOnDetach(boolean recycleChildrenOnDetach) {
-        mRecycleChildrenOnDetach = recycleChildrenOnDetach;
-    }
-
     @Override
     public void onDetachedFromWindow(RecyclerView view, RecyclerView.Recycler recycler) {
         super.onDetachedFromWindow(view, recycler);
@@ -280,10 +254,10 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
             mPendingSavedState = (SavedState) state;
             requestLayout();
             if (DEBUG) {
-                Log.d(TAG, "loaded saved state");
+                Timber.d("$TAG loaded saved state");
             }
         } else if (DEBUG) {
-            Log.d(TAG, "invalid saved state class");
+            Timber.d("$TAG invalid saved state class");
         }
     }
 
@@ -497,15 +471,6 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
     }
 
     @Override
-    public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state,
-            int position) {
-        LinearSmoothScroller linearSmoothScroller =
-                new LinearSmoothScroller(recyclerView.getContext());
-        linearSmoothScroller.setTargetPosition(position);
-        startSmoothScroll(linearSmoothScroller);
-    }
-
-    @Override
     public PointF computeScrollVectorForPosition(int targetPosition) {
         if (getChildCount() == 0) {
             return null;
@@ -532,7 +497,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
         // 4) scroll to fulfill requirements like stack from bottom.
         // create layout state
         if (DEBUG) {
-            Log.d(TAG, "is pre layout:" + state.isPreLayout());
+            Timber.d("$TAG is pre layout:" + state.isPreLayout());
         }
         if (mPendingSavedState != null || mPendingScrollPosition != RecyclerView.NO_POSITION) {
             if (state.getItemCount() == 0) {
@@ -575,7 +540,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
             mAnchorInfo.assignFromViewAndKeepVisibleRect(focused, getPosition(focused));
         }
         if (DEBUG) {
-            Log.d(TAG, "Anchor info:" + mAnchorInfo);
+            Timber.d("$TAG Anchor info:" + mAnchorInfo);
         }
 
         // LLM may decide to layout items for "extra" pixels to account for scrolling target,
@@ -777,7 +742,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
         }
 
         if (DEBUG) {
-            Log.d(TAG, "for unused scrap, decided to add " + scrapExtraStart
+            Timber.d("$TAG for unused scrap, decided to add " + scrapExtraStart
                     + " towards start and " + scrapExtraEnd + " towards end");
         }
         mLayoutState.mScrapList = scrapList;
@@ -805,19 +770,19 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
             AnchorInfo anchorInfo) {
         if (updateAnchorFromPendingData(state, anchorInfo)) {
             if (DEBUG) {
-                Log.d(TAG, "updated anchor info from pending information");
+                Timber.d("$TAG updated anchor info from pending information");
             }
             return;
         }
 
         if (updateAnchorFromChildren(recycler, state, anchorInfo)) {
             if (DEBUG) {
-                Log.d(TAG, "updated anchor info from existing children");
+                Timber.d("$TAG updated anchor info from existing children");
             }
             return;
         }
         if (DEBUG) {
-            Log.d(TAG, "deciding anchor info for fresh state");
+            Timber.d("$TAG deciding anchor info for fresh state");
         }
         anchorInfo.assignCoordinateFromPadding();
         anchorInfo.mPosition = mStackFromEnd ? state.getItemCount() - 1 : 0;
@@ -880,7 +845,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
             mPendingScrollPosition = RecyclerView.NO_POSITION;
             mPendingScrollPositionOffset = INVALID_OFFSET;
             if (DEBUG) {
-                Log.e(TAG, "ignoring invalid scroll position " + mPendingScrollPosition);
+                Timber.e("$TAG ignoring invalid scroll position " + mPendingScrollPosition);
             }
             return false;
         }
@@ -1191,38 +1156,6 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
                 this, mSmoothScrollbarEnabled);
     }
 
-    /**
-     * When smooth scrollbar is enabled, the position and size of the scrollbar thumb is computed
-     * based on the number of visible pixels in the visible items. This however assumes that all
-     * list items have similar or equal widths or heights (depending on list orientation).
-     * If you use a list in which items have different dimensions, the scrollbar will change
-     * appearance as the user scrolls through the list. To avoid this issue,  you need to disable
-     * this property.
-     *
-     * When smooth scrollbar is disabled, the position and size of the scrollbar thumb is based
-     * solely on the number of items in the adapter and the position of the visible items inside
-     * the adapter. This provides a stable scrollbar as the user navigates through a list of items
-     * with varying widths / heights.
-     *
-     * @param enabled Whether or not to enable smooth scrollbar.
-     *
-     * @see #setSmoothScrollbarEnabled(boolean)
-     */
-    public void setSmoothScrollbarEnabled(boolean enabled) {
-        mSmoothScrollbarEnabled = enabled;
-    }
-
-    /**
-     * Returns the current state of the smooth scrollbar feature. It is enabled by default.
-     *
-     * @return True if smooth scrollbar is enabled, false otherwise.
-     *
-     * @see #setSmoothScrollbarEnabled(boolean)
-     */
-    public boolean isSmoothScrollbarEnabled() {
-        return mSmoothScrollbarEnabled;
-    }
-
     private void updateLayoutState(int layoutDirection, int requiredSpace,
             boolean canUseExistingSpace, RecyclerView.State state) {
         // If parent provides a hint, don't measure unlimited.
@@ -1313,55 +1246,6 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
         }
     }
 
-    /**
-     * Sets the number of items to prefetch in
-     * {@link #collectInitialPrefetchPositions(int, LayoutPrefetchRegistry)}, which defines
-     * how many inner items should be prefetched when this LayoutManager's RecyclerView
-     * is nested inside another RecyclerView.
-     *
-     * <p>Set this value to the number of items this inner LayoutManager will display when it is
-     * first scrolled into the viewport. RecyclerView will attempt to prefetch that number of items
-     * so they are ready, avoiding jank as the inner RecyclerView is scrolled into the viewport.</p>
-     *
-     * <p>For example, take a vertically scrolling RecyclerView with horizontally scrolling inner
-     * RecyclerViews. The rows always have 4 items visible in them (or 5 if not aligned). Passing
-     * <code>4</code> to this method for each inner RecyclerView's LinearLayoutManager will enable
-     * RecyclerView's prefetching feature to do create/bind work for 4 views within a row early,
-     * before it is scrolled on screen, instead of just the default 2.</p>
-     *
-     * <p>Calling this method does nothing unless the LayoutManager is in a RecyclerView
-     * nested in another RecyclerView.</p>
-     *
-     * <p class="note"><strong>Note:</strong> Setting this value to be larger than the number of
-     * views that will be visible in this view can incur unnecessary bind work, and an increase to
-     * the number of Views created and in active use.</p>
-     *
-     * @param itemCount Number of items to prefetch
-     *
-     * @see #isItemPrefetchEnabled()
-     * @see #getInitialPrefetchItemCount()
-     * @see #collectInitialPrefetchPositions(int, LayoutPrefetchRegistry)
-     */
-    public void setInitialPrefetchItemCount(int itemCount) {
-        mInitialPrefetchItemCount = itemCount;
-    }
-
-    /**
-     * Gets the number of items to prefetch in
-     * {@link #collectInitialPrefetchPositions(int, LayoutPrefetchRegistry)}, which defines
-     * how many inner items should be prefetched when this LayoutManager's RecyclerView
-     * is nested inside another RecyclerView.
-     *
-     * @see #isItemPrefetchEnabled()
-     * @see #setInitialPrefetchItemCount(int)
-     * @see #collectInitialPrefetchPositions(int, LayoutPrefetchRegistry)
-     *
-     * @return number of items to prefetch.
-     */
-    public int getInitialPrefetchItemCount() {
-        return mInitialPrefetchItemCount;
-    }
-
     @Override
     public void collectAdjacentPrefetchPositions(int dx, int dy, RecyclerView.State state,
             LayoutPrefetchRegistry layoutPrefetchRegistry) {
@@ -1391,14 +1275,14 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
                 + fill(recycler, mLayoutState, state, false);
         if (consumed < 0) {
             if (DEBUG) {
-                Log.d(TAG, "Don't have any more elements to scroll");
+                Timber.d("$TAG Don't have any more elements to scroll");
             }
             return 0;
         }
         final int scrolled = absDelta > consumed ? layoutDirection * consumed : delta;
         mOrientationHelper.offsetChildren(-scrolled);
         if (DEBUG) {
-            Log.d(TAG, "scroll req: " + delta + " scrolled: " + scrolled);
+            Timber.d("$TAG scroll req: " + delta + " scrolled: " + scrolled);
         }
         mLayoutState.mLastScrollDelta = scrolled;
         return scrolled;
@@ -1422,7 +1306,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
             return;
         }
         if (DEBUG) {
-            Log.d(TAG, "Recycling " + Math.abs(startIndex - endIndex) + " items");
+            Timber.d("$TAG Recycling " + Math.abs(startIndex - endIndex) + " items");
         }
         if (endIndex > startIndex) {
             for (int i = endIndex - 1; i >= startIndex; i--) {
@@ -1452,7 +1336,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
             int noRecycleSpace) {
         if (scrollingOffset < 0) {
             if (DEBUG) {
-                Log.d(TAG, "Called recycle from start with a negative value. This might happen"
+                Timber.d("$TAG Called recycle from start with a negative value. This might happen"
                         + " during layout changes but may be sign of a bug");
             }
             return;
@@ -1502,7 +1386,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
         final int childCount = getChildCount();
         if (scrollingOffset < 0) {
             if (DEBUG) {
-                Log.d(TAG, "Called recycle from end with a negative value. This might happen"
+                Timber.d("$TAG Called recycle from end with a negative value. This might happen"
                         + " during layout changes but may be sign of a bug");
             }
             return;
@@ -1684,7 +1568,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
         // To calculate correct layout position, we subtract margins.
         layoutDecoratedWithMargins(view, left, top, right, bottom);
         if (DEBUG) {
-            Log.d(TAG, "laid out child at position " + getPosition(view) + ", with l:"
+            Timber.d("$TAG laid out child at position " + getPosition(view) + ", with l:"
                     + (left + params.leftMargin) + ", t:" + (top + params.topMargin) + ", r:"
                     + (right - params.rightMargin) + ", b:" + (bottom - params.bottomMargin));
         }
@@ -1744,7 +1628,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
                         : LayoutState.INVALID_LAYOUT;
             default:
                 if (DEBUG) {
-                    Log.d(TAG, "Unknown focus request:" + focusDirection);
+                    Timber.d("$TAG Unknown focus request:" + focusDirection);
                 }
                 return LayoutState.INVALID_LAYOUT;
         }
@@ -2086,13 +1970,13 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
      * Logs the internal representation of children to default logger.
      */
     private void logChildren() {
-        Log.d(TAG, "internal representation of views on the screen");
+        Timber.d("$TAG internal representation of views on the screen");
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
-            Log.d(TAG, "item " + getPosition(child) + ", coord:"
+            Timber.d("$TAG item " + getPosition(child) + ", coord:"
                     + mOrientationHelper.getDecoratedStart(child));
         }
-        Log.d(TAG, "==============");
+        Timber.d("$TAG ==============");
     }
 
     /**
@@ -2106,7 +1990,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
      * be closest to position WIDTH  or HEIGHT
      */
     void validateChildOrder() {
-        Log.d(TAG, "validating child count " + getChildCount());
+        Timber.d("$TAG validating child count " + getChildCount());
         if (getChildCount() < 1) {
             return;
         }
@@ -2372,7 +2256,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
         }
 
         void log() {
-            Log.d(TAG, "avail:" + mAvailable + ", ind:" + mCurrentPosition + ", dir:"
+            Timber.d("$TAG avail:" + mAvailable + ", ind:" + mCurrentPosition + ", dir:"
                     + mItemDirection + ", offset:" + mOffset + ", layoutDir:" + mLayoutDirection);
         }
     }

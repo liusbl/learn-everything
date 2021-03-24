@@ -19,6 +19,7 @@ class RecyclerTestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recycler_test)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = Adapter()
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 
     class Adapter : RecyclerView.Adapter<Holder>() {
